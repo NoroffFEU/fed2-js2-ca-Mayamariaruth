@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import path from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
@@ -8,14 +8,13 @@ export default defineConfig({
     target: "esnext",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "./index.html"),
-        login: resolve(__dirname, "./auth/login/index.html"),
-        auth: resolve(__dirname, "./auth/index.html"),
-        register: resolve(__dirname, "./auth/register/index.html"),
-        profile: resolve(__dirname, "./profile/index.html"),
-        post: resolve(__dirname, "./post/index.html"),
-        editPost: resolve(__dirname, "./post/edit/index.html"),
-        createPost: resolve(__dirname, "./post/create/index.html"),
+        main: path.resolve(__dirname, "./index.html"),
+        login: path.resolve(__dirname, "./auth/login/index.html"),
+        register: path.resolve(__dirname, "./auth/register/index.html"),
+        profile: path.resolve(__dirname, "./profile/index.html"),
+        post: path.resolve(__dirname, "./post/index.html"),
+        editPost: path.resolve(__dirname, "./post/edit/index.html"),
+        createPost: path.resolve(__dirname, "./post/create/index.html"),
       },
     },
   },
