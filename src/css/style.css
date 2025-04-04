@@ -1,1 +1,19 @@
 @import url(_reset.css);
+
+:root {
+  --background: #101010;
+  --primary: #222222;
+  --secondary: #474747;
+  --accent: #ff2a2a;
+  --form-fields: #1a1a1a;
+  --font-size-base: 16px;
+}
+
+body {
+  background-color: var(--background);
+}
+
+form input {
+  background-color: var(--form-fields);
+  border: solid 1px var(--secondary);
+}
