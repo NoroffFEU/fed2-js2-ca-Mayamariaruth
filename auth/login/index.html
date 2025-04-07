@@ -29,21 +29,56 @@
   </head>
 
   <body>
-    <h1>Login</h1>
-    <form name="login">
+    <header class="d-flex flex-row">
       <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
+        <h1 class="logo">EchoSphere</h1>
       </div>
-
       <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
+        <form name="search">
+          <input class="rounded-3" id="search" type="search" />
+        </form>
       </div>
+      <div class="nav-icons">
+        <a href="../../index.html">
+          <i class="fa-solid fa-house text-white"></i>
+        </a>
+        <a href="#">
+          <i class="fa-solid fa-user text-white"></i>
+        </a>
+        <a href="#">
+          <i class="fa-solid fa-circle-info text-white"></i>
+        </a>
+      </div>
+    </header>
+    <section class="border auth-form">
+      <h1>Login</h1>
+      <form name="login" class="login-form">
+        <div>
+          <label for="email">Email</label>
+          <input
+            class="rounded-3"
+            id="email"
+            type="email"
+            name="email"
+            required
+          />
+        </div>
 
-      <a href="/auth/register/">Register</a>
-      <button type="submit">Login</button>
-    </form>
+        <div>
+          <label for="password">Password</label>
+          <input
+            class="rounded-3"
+            type="password"
+            name="password"
+            id="password"
+            required
+          />
+        </div>
+
+        <a href="/auth/register/">Register</a>
+        <button type="submit">Login</button>
+      </form>
+    </section>
     <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"

@@ -14,7 +14,29 @@ body {
   color: #ffffff;
 }
 
-form input {
+.logo {
+  font-family: "Italiana", sans-serif;
+  background: linear-gradient(to right, #ff2a2a 25%, #ffd500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+#search {
+  background-color: var(--primary);
+  border: none;
+}
+
+.nav-icons a {
+  text-decoration: none;
+}
+
+.auth-form {
+  border: solid var(--secondary) 1px !important;
+  background-color: var(--primary);
+}
+
+.login-form input {
   background-color: var(--form-fields);
   border: solid 1px var(--secondary);
 }
