@@ -19,16 +19,11 @@ body {
   background: linear-gradient(to right, #ff2a2a 25%, #ffd500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
 }
 
-#search {
+.search {
   background-color: var(--primary);
   border: none;
-}
-
-.nav-icons a {
-  text-decoration: none;
 }
 
 .auth-form {
