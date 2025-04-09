@@ -31,13 +31,13 @@
   <body>
     <!-- Header -->
     <header>
-      <nav class="navbar navbar-expand-sm px-3">
+      <nav class="navbar position-relative px-3">
         <!-- Logo / Brand -->
         <a class="navbar-brand logo" href="../../index.html">EchoSphere</a>
 
         <!-- Mobile toggle button -->
         <button
-          class="navbar-toggler"
+          class="navbar-toggler d-block d-sm-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#mobileMenu"
@@ -45,7 +45,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <i class="fa-solid fa-bars text-white" id="menuToggleIcon"></i>
         </button>
 
         <!-- Desktop Navbar -->
@@ -65,47 +65,52 @@
           <!-- Icons -->
           <div class="nav-icons d-flex gap-3">
             <a href="../../index.html" class="nav-link text-white">
-              <i class="fa-solid fa-house"></i>
+              <span class="icon-wrapper d-inline-block position-relative">
+                <i class="fa-solid fa-house nav-icon-desktop"></i>
+              </span>
             </a>
             <a href="#" class="nav-link text-white">
-              <i class="fa-solid fa-user"></i>
+              <span class="icon-wrapper d-inline-block position-relative">
+                <i class="fa-solid fa-user nav-icon-desktop"></i>
+              </span>
             </a>
             <a href="#" class="nav-link text-white">
-              <i class="fa-solid fa-circle-info"></i>
+              <span class="icon-wrapper d-inline-block position-relative">
+                <i class="fa-solid fa-circle-info nav-icon-desktop"></i>
+              </span>
             </a>
           </div>
         </div>
-
-        <!-- Mobile menu (collapsible) -->
-        <div class="collapse d-sm-none mt-3" id="mobileMenu">
-          <ul class="navbar-nav d-flex flex-column gap-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="../../index.html">
-                <i class="fa-solid fa-house me-2"></i>Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
-                <i class="fa-solid fa-user me-2"></i>Profile
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
-                <i class="fa-solid fa-circle-info me-2"></i>About
-              </a>
-            </li>
-          </ul>
-          <!-- Search bar -->
-          <form class="mb-3" role="search">
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Search EchoSphere"
-              aria-label="Search"
-            />
-          </form>
-        </div>
       </nav>
+      <!-- Mobile menu (collapsible) -->
+      <div class="collapse d-sm-none mt-3" id="mobileMenu">
+        <ul class="navbar-nav d-flex flex-column gap-2">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../../index.html">
+              <i class="fa-solid fa-house me-2"></i>Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">
+              <i class="fa-solid fa-user me-2"></i>Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">
+              <i class="fa-solid fa-circle-info me-2"></i>About
+            </a>
+          </li>
+        </ul>
+        <!-- Search bar -->
+        <form class="mb-3" role="search">
+          <input
+            class="form-control rounded-3 search"
+            type="search"
+            placeholder="Search EchoSphere"
+            aria-label="Search"
+          />
+        </form>
+      </div>
     </header>
     <!-- Main content -->
     <main>

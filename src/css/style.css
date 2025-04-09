@@ -19,6 +19,7 @@ body {
   background: linear-gradient(to right, #ff2a2a 25%, #ffd500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 1.7rem;
 }
 
 .search {
@@ -26,6 +27,37 @@ body {
   border: none;
 }
 
+.search::placeholder {
+  color: #737373;
+}
+
+.icon-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 4px;
+  background-color: #ff2a2a;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.icon-wrapper:hover::after {
+  opacity: 1;
+}
+
+.nav-icon-desktop {
+  font-size: 1.5rem;
+}
+
+.nav-icon-desktop:hover {
+  color: #ff2a2a;
+}
+
+/* Login page */
 .auth-form {
   border: solid var(--secondary) 1px !important;
   background-color: var(--primary);
@@ -34,4 +66,31 @@ body {
 .login-form input {
   background-color: var(--form-fields);
   border: solid 1px var(--secondary);
+}
+
+/* Media Queries */
+@media (min-width: 576px) {
+  .logo {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 2rem;
+  }
+
+  .nav-icon-desktop {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 998px) {
+  .logo {
+    font-size: 40px;
+  }
+
+  .nav-icon-desktop {
+    font-size: 1.8rem;
+  }
 }
