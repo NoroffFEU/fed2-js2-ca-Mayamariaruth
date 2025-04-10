@@ -115,10 +115,17 @@
         <!-- View Profile -->
         <div id="profile-view">
           <h1 class="main-heading text-center mb-4">My Profile</h1>
+          <div class="d-flex justify-content-center mb-4">
+            <img
+              id="profile-avatar"
+              src="../public/images/avatar.png"
+              alt="User Avatar"
+            />
+          </div>
           <p><strong>Username:</strong> <span id="profile-username"></span></p>
           <p><strong>Email:</strong> <span id="profile-email"></span></p>
           <p><strong>Bio:</strong> <span id="profile-bio"></span></p>
-          <button class="submit-btn mt-4 w-100" id="edit-profile-btn">
+          <button class="submit-btn mt-4 mb-4 w-100" id="edit-profile-btn">
             Edit Profile
           </button>
         </div>
@@ -143,6 +150,15 @@
                 id="edit-email"
                 class="rounded-3 p-2 search w-100"
                 required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="edit-avatar">Avatar URL</label>
+              <input
+                type="url"
+                id="edit-avatar"
+                class="rounded-3 p-2 search w-100"
+                placeholder="https://example.com/avatar.jpg"
               />
             </div>
             <div class="mb-4">

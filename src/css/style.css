@@ -30,7 +30,7 @@ body {
 /* Navigation bar */
 .logo {
   font-family: "Italiana", sans-serif;
-  background: linear-gradient(to right, var(--accent), #ffd500 70%);
+  background: linear-gradient(to right, var(--accent), #ffd500 85%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
