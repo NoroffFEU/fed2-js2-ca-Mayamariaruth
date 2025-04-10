@@ -12,12 +12,14 @@
 body {
   background-color: var(--background);
   color: #ffffff;
+  font-family: "Inter", sans-serif;
 }
 
 .logo {
   font-family: "Italiana", sans-serif;
   background: linear-gradient(to right, #ff2a2a 25%, #ffd500);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.7rem;
 }
@@ -25,10 +27,19 @@ body {
 .search {
   background-color: var(--primary);
   border: none;
+  width: 80%;
 }
 
 .search::placeholder {
   color: #737373;
+}
+
+.search:focus {
+  outline: none;
+  border: solid 2px var(--secondary);
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow: none;
 }
 
 .icon-wrapper::after {
@@ -91,6 +102,6 @@ body {
   }
 
   .nav-icon-desktop {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 }
