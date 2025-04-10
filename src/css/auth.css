@@ -1,0 +1,47 @@
+.auth-form {
+  border: solid var(--secondary) 1px !important;
+  background-color: var(--primary);
+}
+
+#email:focus,
+#password:focus {
+  background-color: var(--background);
+}
+
+.submit-btn {
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 8px 0;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #028b3b;
+}
+
+.link-btn {
+  color: #ffffff;
+  width: 100%;
+  border: solid 1px var(--secondary);
+  border-radius: 8px;
+  padding: 8px 0;
+  background-color: transparent;
+}
+
+.link-btn:hover {
+  background-color: var(--background);
+}
+
+@media (min-width: 768px) {
+  .auth-form {
+    width: 500px;
+    height: 430px;
+  }
+
+  #register-form {
+    height: 500px;
+  }
+}

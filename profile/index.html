@@ -33,7 +33,6 @@
       <nav class="navbar position-relative px-3">
         <!-- Logo / Brand -->
         <a class="navbar-brand logo me-5" href="../../index.html">EchoSphere</a>
-
         <!-- Mobile toggle button -->
         <button
           class="navbar-toggler d-block d-sm-none"
@@ -46,7 +45,6 @@
         >
           <i class="fa-solid fa-bars text-white" id="menu-toggle-icon"></i>
         </button>
-
         <!-- Desktop Navbar -->
         <div
           class="d-none d-sm-flex flex-grow-1 justify-content-between align-items-center gap-5"
@@ -60,7 +58,6 @@
               aria-label="Search"
             />
           </form>
-
           <!-- Icons -->
           <div class="d-flex gap-3">
             <a href="../../index.html" class="nav-link text-white">
@@ -111,14 +108,60 @@
         </form>
       </div>
     </header>
-    <!-- Main content -->
-    <main>
-      <h1>Profile</h1>
 
-      <form name="updateProfile">
-        <button>Update Profile</button>
-      </form>
+    <!-- Main content -->
+    <main class="d-flex justify-content-center mt-5">
+      <section class="border profile-card p-4">
+        <!-- View Profile -->
+        <div id="profile-view">
+          <h1 class="main-heading text-center mb-4">My Profile</h1>
+          <p><strong>Username:</strong> <span id="profile-username"></span></p>
+          <p><strong>Email:</strong> <span id="profile-email"></span></p>
+          <p><strong>Bio:</strong> <span id="profile-bio"></span></p>
+          <button class="submit-btn mt-4 w-100" id="edit-profile-btn">
+            Edit Profile
+          </button>
+        </div>
+
+        <!-- Edit Profile (Hidden) -->
+        <div id="profile-edit" class="d-none">
+          <h1 class="main-heading text-center mb-4">Edit Profile</h1>
+          <form id="profile-form" class="main-forms">
+            <div class="mb-3">
+              <label for="edit-username">Username</label>
+              <input
+                type="text"
+                id="edit-username"
+                class="rounded-3 p-2 search w-100"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="edit-email">Email</label>
+              <input
+                type="email"
+                id="edit-email"
+                class="rounded-3 p-2 search w-100"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label for="edit-bio">Bio</label>
+              <textarea
+                id="edit-bio"
+                class="rounded-3 p-2 search w-100"
+                rows="3"
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn mb-2 w-100">Save</button>
+            <button type="button" class="link-btn w-100" id="cancel-edit-btn">
+              Cancel
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
+
     <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"

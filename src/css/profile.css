@@ -1,0 +1,15 @@
+.profile-card {
+  border: solid var(--secondary) 1px !important;
+  background-color: var(--primary);
+}
+
+@media (min-width: 768px) {
+  .profile-card {
+    width: 500px;
+    height: 400px;
+  }
+
+  #register-form {
+    height: 500px;
+  }
+}
