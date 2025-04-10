@@ -68,6 +68,10 @@ body {
   color: #ff2a2a;
 }
 
+#menu-toggle-icon {
+  font-size: 1.7rem;
+}
+
 /* Login page */
 .auth-form {
   border: solid var(--secondary) 1px !important;
