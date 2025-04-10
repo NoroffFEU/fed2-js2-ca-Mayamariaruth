@@ -113,49 +113,63 @@
       </div>
     </header>
     <!-- Main content -->
-    <main>
-      <h1>Register</h1>
+    <main class="d-flex justify-content-center mt-5">
+      <section class="border auth-form p-4" id="register-form">
+        <h1 class="main-heading text-center mb-3">Register</h1>
+        <!-- Register form -->
+        <form name="register" class="main-forms px-md-3 mt-md-4">
+          <div class="mb-3">
+            <label for="name">Username</label>
+            <input
+              class="rounded-3 p-2 search w-100"
+              id="name"
+              type="text"
+              name="name"
+              required
+              maxlength="20"
+              pattern="^[\w]+$"
+              title="Please
+            enter a username using only letters and numbers"
+              placeholder="Johndoe123"
+            />
+          </div>
 
-      <form name="register">
-        <div>
-          <label for="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            required
-            maxlength="20"
-            pattern="^[\w]+$"
-            title="Please enter a username using only letters and numbers"
-          />
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <input
+              class="rounded-3 p-2 search w-100"
+              id="email"
+              type="email"
+              name="email"
+              required
+              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+              title="Please enter a valid noroff.no or stud.noroff.no address"
+              placeholder="johndoe@stud.noroff.no"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="password">Password</label>
+            <input
+              class="rounded-3 p-2 search w-100 mb-1"
+              type="password"
+              name="password"
+              id="password"
+              required
+              minlength="8"
+              placeholder="********"
+            />
+          </div>
+          <button type="submit" class="submit-btn mb-2 mt-md-4">
+            Register
+          </button>
+        </form>
+        <div class="px-md-3">
+          <a href="/auth/register/">
+            <button class="link-btn">Login</button>
+          </a>
         </div>
-
-        <div>
-          <label for="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            required
-            pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-            title="Please enter a valid noroff.no or stud.noroff.no address"
-          />
-        </div>
-
-        <div>
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            required
-            minlength="8"
-          />
-        </div>
-
-        <a href="/auth/login/">Login</a>
-        <button>Register</button>
-      </form>
+      </section>
     </main>
     <!-- Bootstrap -->
     <script

@@ -108,14 +108,12 @@ body {
 }
 
 .link-btn {
-  text-decoration: none;
   color: #ffffff;
   width: 100%;
   border: solid 1px var(--secondary);
   border-radius: 8px;
   padding: 8px 0;
   background-color: transparent;
-  font-weight: 300;
 }
 
 .link-btn:hover {
@@ -145,6 +143,10 @@ body {
   .auth-form {
     width: 500px;
     height: 430px;
+  }
+
+  #register-form {
+    height: 500px;
   }
 }
 
