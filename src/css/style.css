@@ -4,7 +4,7 @@
   --background: #101010;
   --primary: #222222;
   --secondary: #474747;
-  --accent: #ff2a2a;
+  --accent: #00c853;
   --form-fields: #1a1a1a;
   --font-size-base: 16px;
 }
@@ -15,9 +15,14 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.main-heading {
+  font-size: 32px;
+}
+
+/* Navigation bar */
 .logo {
   font-family: "Italiana", sans-serif;
-  background: linear-gradient(to right, #ff2a2a 25%, #ffd500);
+  background: linear-gradient(to right, var(--accent), #ffd500 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -50,7 +55,7 @@ body {
   transform: translateX(-50%);
   width: 130%;
   height: 4px;
-  background-color: #ff2a2a;
+  background-color: var(--accent);
   border-radius: 2px;
   opacity: 0;
   pointer-events: none;
@@ -65,28 +70,66 @@ body {
 }
 
 .nav-icon-desktop:hover {
-  color: #ff2a2a;
+  color: var(--accent);
 }
 
 #menu-toggle-icon {
   font-size: 1.7rem;
 }
 
-/* Login page */
+/* Login/register page */
 .auth-form {
   border: solid var(--secondary) 1px !important;
   background-color: var(--primary);
 }
 
-.login-form input {
+.main-forms input {
   background-color: var(--form-fields);
   border: solid 1px var(--secondary);
+}
+
+#email:focus,
+#password:focus {
+  background-color: var(--background);
+}
+
+.submit-btn {
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 8px 0;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #028b3b;
+}
+
+.link-btn {
+  text-decoration: none;
+  color: #ffffff;
+  width: 100%;
+  border: solid 1px var(--secondary);
+  border-radius: 8px;
+  padding: 8px 0;
+  background-color: transparent;
+  font-weight: 300;
+}
+
+.link-btn:hover {
+  background-color: var(--background);
 }
 
 /* Media Queries */
 @media (min-width: 576px) {
   .logo {
     font-size: 1.8rem;
+  }
+
+  .main-heading {
+    font-size: 38px;
   }
 }
 
@@ -98,6 +141,11 @@ body {
   .nav-icon-desktop {
     font-size: 1.6rem;
   }
+
+  .auth-form {
+    width: 500px;
+    height: 430px;
+  }
 }
 
 @media (min-width: 998px) {
@@ -107,5 +155,9 @@ body {
 
   .nav-icon-desktop {
     font-size: 1.9rem;
+  }
+
+  .main-heading {
+    font-size: 46px;
   }
 }

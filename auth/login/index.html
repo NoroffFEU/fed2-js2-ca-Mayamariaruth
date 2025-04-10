@@ -113,34 +113,37 @@
       </div>
     </header>
     <!-- Main content -->
-    <main>
-      <section class="border auth-form">
-        <h1>Login</h1>
-        <form name="login" class="login-form">
-          <div>
+    <main class="d-flex justify-content-center mt-5">
+      <section class="border auth-form p-4">
+        <h1 class="main-heading text-center mb-3">Login</h1>
+        <form name="login" class="main-forms px-md-3 mt-md-4">
+          <div class="mb-3">
             <label for="email">Email</label>
             <input
-              class="rounded-3"
+              class="rounded-3 p-2 search w-100"
               id="email"
               type="email"
               name="email"
+              placeholder="example@hotmail.com"
               required
             />
           </div>
 
-          <div>
+          <div class="mb-4">
             <label for="password">Password</label>
             <input
-              class="rounded-3"
+              class="rounded-3 p-2 search w-100 mb-1"
               type="password"
               name="password"
               id="password"
+              placeholder="*******"
               required
             />
           </div>
-
-          <a href="/auth/register/">Register</a>
-          <button type="submit">Login</button>
+          <button type="submit" class="submit-btn mb-2 mt-md-4">Login</button>
+          <a href="/auth/register/">
+            <button class="link-btn">Register</button>
+          </a>
         </form>
       </section>
     </main>
