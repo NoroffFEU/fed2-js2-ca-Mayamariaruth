@@ -1,7 +1,7 @@
 import { API_AUTH_REGISTER } from "../constants.js";
 import { headers } from "../headers.js";
 
-// Register a new user
+// Registers a new user
 export async function registerUser(username, email, password) {
   const userData = { name: username, email, password };
 

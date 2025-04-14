@@ -40,10 +40,17 @@ export async function onRegister(event) {
   }
 
   // Username validation
-  const letterMatches = username.match(/[a-zA-Z]/g);
-  if (!letterMatches || letterMatches.length < 3) {
+  const punctuationMatches = username.match(/[^\w\s]/g);
+  if (
+    punctuationMatches &&
+    punctuationMatches.length > 0 &&
+    !username.includes("_")
+  ) {
     usernameField.classList.add("is-invalid");
-    showNotification("Username must include at least 3 letters", "error");
+    showNotification(
+      "Username can only contain letters, numbers, and underscores",
+      "error"
+    );
     return;
   }
 
