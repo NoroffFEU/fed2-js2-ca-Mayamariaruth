@@ -30,6 +30,7 @@ header {
 .main-forms input {
   background-color: var(--form-fields);
   border: solid 1px var(--secondary);
+  color: #ffffff !important;
 }
 
 /* Navigation bar */
