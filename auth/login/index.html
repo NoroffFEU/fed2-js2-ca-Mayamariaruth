@@ -74,7 +74,7 @@
                 <i class="fa-solid fa-user nav-icon-desktop"></i>
               </span>
             </a>
-            <a id="about-link" href="#" class="nav-link text-white">
+            <a id="about-link-desktop" href="#" class="nav-link text-white">
               <span class="icon-wrapper d-inline-block position-relative">
                 <i class="fa-solid fa-circle-info nav-icon-desktop"></i>
               </span>
@@ -96,7 +96,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="about-link" class="nav-link text-white" href="#">
+            <a id="about-link-mobile" class="nav-link text-white" href="#">
               <i class="fa-solid fa-circle-info me-2"></i>About
             </a>
           </li>
@@ -117,11 +117,12 @@
       <section class="border auth-form p-4">
         <h1 class="main-heading text-center mb-3">Login</h1>
         <!-- Login form -->
-        <form name="login" class="main-forms px-md-3 mt-md-4">
+        <form name="loginForm" class="main-forms px-md-3 mt-md-4">
           <div class="mb-3">
-            <label for="email">Email</label>
+            <!-- Email field -->
+            <label for="email" class="form-label">Email</label>
             <input
-              class="rounded-3 p-2 search w-100"
+              class="form-control rounded-3 p-2 search w-100"
               id="email"
               type="email"
               name="email"
@@ -129,11 +130,11 @@
               required
             />
           </div>
-
+          <!-- Password field -->
           <div class="mb-4">
-            <label for="password">Password</label>
+            <label for="password" class="form-label">Password</label>
             <input
-              class="rounded-3 p-2 search w-100 mb-1"
+              class="form-control rounded-3 p-2 search w-100 mb-1"
               type="password"
               name="password"
               id="password"
@@ -141,7 +142,7 @@
               required
             />
           </div>
-          <button type="submit" class="submit-btn mb-2 mt-md-4">Login</button>
+          <button type="submit" class="submit-btn mb-2 mt-3">Login</button>
         </form>
         <div class="px-md-3">
           <a href="/auth/register/">

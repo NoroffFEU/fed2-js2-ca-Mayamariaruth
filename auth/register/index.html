@@ -74,7 +74,7 @@
                 <i class="fa-solid fa-user nav-icon-desktop"></i>
               </span>
             </a>
-            <a id="about-link" href="#" class="nav-link text-white">
+            <a id="about-link-desktop" href="#" class="nav-link text-white">
               <span class="icon-wrapper d-inline-block position-relative">
                 <i class="fa-solid fa-circle-info nav-icon-desktop"></i>
               </span>
@@ -96,7 +96,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="about-link" class="nav-link text-white" href="#">
+            <a id="about-link-mobile" class="nav-link text-white" href="#">
               <i class="fa-solid fa-circle-info me-2"></i>About
             </a>
           </li>
@@ -117,41 +117,37 @@
       <section class="border auth-form p-4" id="register-form">
         <h1 class="main-heading text-center mb-3">Register</h1>
         <!-- Register form -->
-        <form name="register" class="main-forms px-md-3 mt-md-4">
+        <form name="registerForm" class="main-forms px-md-3 mt-md-4">
           <div class="mb-3">
-            <label for="name">Username</label>
+            <!-- Username field -->
+            <label for="name" class="form-label">Username</label>
             <input
-              class="rounded-3 p-2 search w-100"
+              class="form-control rounded-3 p-2 search w-100"
               id="name"
               type="text"
               name="name"
               required
               maxlength="20"
-              pattern="^[\w]+$"
-              title="Please
-            enter a username using only letters and numbers"
               placeholder="Johndoe123"
             />
           </div>
-
+          <!-- Email field -->
           <div class="mb-3">
-            <label for="email">Email</label>
+            <label for="email" class="form-label">Email</label>
             <input
-              class="rounded-3 p-2 search w-100"
+              class="form-control rounded-3 p-2 search w-100"
               id="email"
               type="email"
               name="email"
               required
-              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-              title="Please enter a valid noroff.no or stud.noroff.no address"
               placeholder="johndoe@stud.noroff.no"
             />
           </div>
-
+          <!-- Password field -->
           <div class="mb-4">
-            <label for="password">Password</label>
+            <label for="password" class="form-label">Password</label>
             <input
-              class="rounded-3 p-2 search w-100 mb-1"
+              class="form-control rounded-3 p-2 search w-100 mb-1"
               type="password"
               name="password"
               id="password"

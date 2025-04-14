@@ -1,10 +1,17 @@
 .auth-form {
   border: solid var(--secondary) 1px !important;
   background-color: var(--primary);
+  width: 70%;
+  height: 420px;
+}
+
+#register-form {
+  height: 480px;
 }
 
 #email:focus,
-#password:focus {
+#password:focus,
+#name:focus {
   background-color: var(--background);
 }
 
@@ -42,6 +49,6 @@
   }
 
   #register-form {
-    height: 500px;
+    height: 530px;
   }
 }

@@ -1,5 +1,7 @@
 @import url(_reset.css);
 @import url(auth.css);
+@import url(edit.css);
+@import url(home.css);
 @import url(profile.css);
 
 /* General styling */
