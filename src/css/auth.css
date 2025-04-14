@@ -11,7 +11,7 @@
 
 #email:focus,
 #password:focus,
-#name:focus {
+#username:focus {
   background-color: var(--background);
 }
 
