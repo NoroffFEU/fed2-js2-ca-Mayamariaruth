@@ -1,24 +1,29 @@
 import { onLogout } from "../auth/logout.js";
+import { updateNavbarLinks } from "../../../app.js";
 import { isLoggedIn } from "../../utils/auth.js";
 
-// Add logout icons to navbar when user logs in
+// Update desktop navbar dropdown menu with logout option
+// Add logout icon to mobile navbar
 export function setLogoutListener() {
   if (!isLoggedIn()) return;
 
-  // Add to desktop navbar
-  const logoutLinkDesktop = document.createElement("a");
-  logoutLinkDesktop.href = "#";
-  logoutLinkDesktop.className = "nav-link text-white";
-  logoutLinkDesktop.innerHTML = `
-    <span class="icon-wrapper d-inline-block position-relative">
-      <i class="fa-solid fa-right-from-bracket nav-icon-desktop"></i>
-    </span>
-  `;
+  // Desktop logout logic
+  const logoutLink = document.querySelector("#logout-link");
 
-  logoutLinkDesktop.addEventListener("click", onLogout);
+  if (!logoutLink) return;
 
-  const desktopIcons = document.querySelector(".navbar .d-flex.gap-3");
-  if (desktopIcons) desktopIcons.appendChild(logoutLinkDesktop);
+  logoutLink.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    onLogout();
+    updateNavbarLinks();
+
+    if (typeof showNotification === "function") {
+      showNotification("success", "Logged out successfully");
+    }
+
+    window.location.href = "/";
+  });
 
   // Add to mobile navbar
   const mobileLogout = document.createElement("li");

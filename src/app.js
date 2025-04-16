@@ -34,7 +34,7 @@ function setActiveLink() {
 }
 
 // Display different dropdown links depending on whether the user is logged in or not
-function updateNavbarLinks() {
+export function updateNavbarLinks() {
   const loginLink = document.getElementById("login-link");
   const registerLink = document.getElementById("register-link");
   const profileLink = document.getElementById("profile-link");
