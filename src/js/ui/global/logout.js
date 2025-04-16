@@ -25,17 +25,17 @@ export function setLogoutListener() {
     window.location.href = "/";
   });
 
-  // Add to mobile navbar
-  const mobileLogout = document.createElement("li");
-  mobileLogout.className = "nav-item";
-  mobileLogout.innerHTML = `
-    <a class="nav-link text-white" href="#">
-      <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
-    </a>
-  `;
-
-  mobileLogout.addEventListener("click", onLogout);
-
-  const mobileMenu = document.querySelector("#mobile-menu ul");
-  if (mobileMenu) mobileMenu.appendChild(mobileLogout);
+  // Mobile logout
+  const logoutLinkMobile = document.querySelector("#logout-link-mobile");
+  if (logoutLinkMobile) {
+    logoutLinkMobile.addEventListener("click", (event) => {
+      event.preventDefault();
+      onLogout();
+      updateNavbarLinks();
+      if (typeof showNotification === "function") {
+        showNotification("success", "Logged out successfully");
+      }
+      window.location.href = "/";
+    });
+  }
 }

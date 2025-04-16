@@ -10,7 +10,7 @@ setActiveLink();
 
 // Update active styling class on navbar links
 function setActiveLink() {
-  const links = document.querySelectorAll(".navbar .nav-link");
+  const links = document.querySelectorAll(".nav-link");
   const currentPath = window.location.pathname.replace(/\/+$/, "");
 
   links.forEach((link) => {
@@ -35,22 +35,28 @@ function setActiveLink() {
 
 // Display different dropdown links depending on whether the user is logged in or not
 export function updateNavbarLinks() {
-  const loginLink = document.getElementById("login-link");
-  const registerLink = document.getElementById("register-link");
-  const profileLink = document.getElementById("profile-link");
-  const logoutLink = document.getElementById("logout-link");
+  const isLogged = isLoggedIn();
 
-  if (isLoggedIn()) {
-    // Logged-in user, show profile and logout options
-    loginLink.style.display = "none";
-    registerLink.style.display = "none";
-    profileLink.style.display = "block";
-    logoutLink.style.display = "block";
-  } else {
-    // Not logged-in user, show login and register options
-    loginLink.style.display = "block";
-    registerLink.style.display = "block";
-    profileLink.style.display = "none";
-    logoutLink.style.display = "none";
-  }
+  const desktop = {
+    login: document.getElementById("login-link"),
+    register: document.getElementById("register-link"),
+    profile: document.getElementById("profile-link"),
+    logout: document.getElementById("logout-link"),
+  };
+
+  const mobile = {
+    login: document.getElementById("login-wrapper-mobile"),
+    register: document.getElementById("register-wrapper-mobile"),
+    profile: document.getElementById("profile-wrapper-mobile"),
+    logout: document.getElementById("logout-wrapper-mobile"),
+  };
+
+  [desktop, mobile].forEach((group) => {
+    if (group.login) group.login.style.display = isLogged ? "none" : "block";
+    if (group.register)
+      group.register.style.display = isLogged ? "none" : "block";
+    if (group.profile)
+      group.profile.style.display = isLogged ? "block" : "none";
+    if (group.logout) group.logout.style.display = isLogged ? "block" : "none";
+  });
 }

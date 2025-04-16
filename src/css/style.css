@@ -92,7 +92,7 @@ header {
   font-size: 1.7rem;
 }
 
-.navbar .nav-link.active {
+.nav-link.active {
   color: var(--accent) !important;
 }
 
