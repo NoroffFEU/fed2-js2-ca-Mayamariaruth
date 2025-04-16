@@ -8,36 +8,49 @@ setLogoutListener();
 updateNavbarLinks();
 setActiveLink();
 
-// Helper function to update active class on navbar links
+// Update active styling class on navbar links
 function setActiveLink() {
   const links = document.querySelectorAll(".navbar .nav-link");
   const currentPath = window.location.pathname.replace(/\/+$/, "");
 
   links.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("#")) return;
+    const linkPath = new URL(link.href).pathname.replace(/\/+$/, ""); // Normalize href
 
-    const linkPath = new URL(
-      link.href,
-      window.location.origin
-    ).pathname.replace(/\/+$/, "");
-
-    if (linkPath === currentPath) {
+    // Only set active if the current path exactly matches the link path
+    if (linkPath === currentPath && link.getAttribute("href") !== "#") {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
     }
   });
+
+  // Add active state for profile icon
+  const profileIcon = document.querySelector("#profile-dropdown");
+  if (currentPath.includes("/profile")) {
+    profileIcon.classList.add("active");
+  } else {
+    profileIcon.classList.remove("active");
+  }
 }
 
+// Display different dropdown links depending on whether the user is logged in or not
 function updateNavbarLinks() {
-  const profileLinks = document.querySelectorAll('a[href="#profile"]');
+  const loginLink = document.getElementById("login-link");
+  const registerLink = document.getElementById("register-link");
+  const profileLink = document.getElementById("profile-link");
+  const logoutLink = document.getElementById("logout-link");
 
-  profileLinks.forEach((link) => {
-    if (isLoggedIn()) {
-      link.setAttribute("href", "/profile/");
-    } else {
-      link.setAttribute("href", "/auth/login/");
-    }
-  });
+  if (isLoggedIn()) {
+    // Logged-in user, show profile and logout options
+    loginLink.style.display = "none";
+    registerLink.style.display = "none";
+    profileLink.style.display = "block";
+    logoutLink.style.display = "block";
+  } else {
+    // Not logged-in user, show login and register options
+    loginLink.style.display = "block";
+    registerLink.style.display = "block";
+    profileLink.style.display = "none";
+    logoutLink.style.display = "none";
+  }
 }

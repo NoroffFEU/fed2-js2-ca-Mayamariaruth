@@ -67,11 +67,32 @@
                 <i class="fa-solid fa-house nav-icon-desktop"></i>
               </span>
             </a>
-            <a href="#profile" class="nav-link text-white d-inline-block">
-              <span class="icon-wrapper d-inline-block position-relative">
-                <i class="fa-solid fa-user nav-icon-desktop"></i>
-              </span>
-            </a>
+            <div class="dropdown">
+              <a href="#" class="nav-link text-white d-inline-block">
+                <span class="icon-wrapper d-inline-block position-relative">
+                  <i class="fa-solid fa-user nav-icon-desktop"></i>
+                </span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profile-dropdown">
+                <!-- Links for not logged in and logged in users -->
+                <li>
+                  <a class="dropdown-item" href="#" id="login-link">Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="register-link"
+                    >Register</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/profile/" id="profile-link"
+                    >Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logout-link">Logout</a>
+                </li>
+              </ul>
+            </div>
             <a
               id="about-link-desktop"
               href="#"
