@@ -2,11 +2,17 @@ import "./css/style.css";
 import router from "./js/router";
 import { setLogoutListener } from "./js/ui/global/logout.js";
 import { isLoggedIn } from "./js/utils/auth.js";
+import {
+  loadAboutModal,
+  aboutModalTrigger,
+} from "./js/ui/global/aboutModal.js";
 
 await router(window.location.pathname);
 setLogoutListener();
 updateNavbarLinks();
 setActiveLink();
+await loadAboutModal();
+aboutModalTrigger();
 
 // Update active styling class on navbar links
 function setActiveLink() {
