@@ -72,7 +72,13 @@ export async function onRegister(event) {
   try {
     const result = await registerUser(username, email, password);
     if (result) {
-      showNotification("Registered successfully!", "success");
+      sessionStorage.setItem(
+        "notification",
+        JSON.stringify({
+          type: "success",
+          message: `Registered successfully!`,
+        })
+      );
       window.location.href = "/auth/login/";
     }
   } catch (error) {

@@ -2,6 +2,7 @@ import "./css/style.css";
 import router from "./js/router";
 import { setLogoutListener } from "./js/ui/global/logout.js";
 import { isLoggedIn } from "./js/utils/auth.js";
+import { showNotification } from "./js/utils/notifications.js";
 import {
   loadAboutModal,
   aboutModalTrigger,
@@ -19,10 +20,9 @@ function setActiveLink() {
   const links = document.querySelectorAll(".nav-link");
   const currentPath = window.location.pathname.replace(/\/+$/, "");
 
+  // Highlight matching nav links
   links.forEach((link) => {
-    const linkPath = new URL(link.href).pathname.replace(/\/+$/, ""); // Normalize href
-
-    // Only set active if the current path exactly matches the link path
+    const linkPath = new URL(link.href).pathname.replace(/\/+$/, "");
     if (linkPath === currentPath && link.getAttribute("href") !== "#") {
       link.classList.add("active");
     } else {
@@ -30,12 +30,20 @@ function setActiveLink() {
     }
   });
 
-  // Add active state for profile icon
+  // Set profile icon as active on login/register and profile page
   const profileIcon = document.querySelector("#profile-dropdown");
-  if (currentPath.includes("/profile")) {
-    profileIcon.classList.add("active");
-  } else {
-    profileIcon.classList.remove("active");
+
+  if (profileIcon) {
+    const highlightProfile =
+      currentPath === "/auth/login" ||
+      currentPath === "/auth/register" ||
+      currentPath.startsWith("/profile");
+
+    if (highlightProfile) {
+      profileIcon.classList.add("active");
+    } else {
+      profileIcon.classList.remove("active");
+    }
   }
 }
 
@@ -65,4 +73,12 @@ export function updateNavbarLinks() {
       group.profile.style.display = isLogged ? "block" : "none";
     if (group.logout) group.logout.style.display = isLogged ? "block" : "none";
   });
+}
+
+// Display notifications from showNotification function on all pages
+const stored = sessionStorage.getItem("notification");
+if (stored) {
+  const { type, message } = JSON.parse(stored);
+  showNotification(message, type);
+  sessionStorage.removeItem("notification");
 }

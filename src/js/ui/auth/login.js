@@ -19,7 +19,13 @@ export async function onLogin(event) {
 
   try {
     const user = await loginUser({ email, password });
-    showNotification(`Welcome, ${user.name}!`, "success");
+    sessionStorage.setItem(
+      "notification",
+      JSON.stringify({
+        type: "success",
+        message: `Welcome back, ${user.name}!`,
+      })
+    );
     window.location.href = "/";
   } catch (error) {
     showNotification(error.message, "error");

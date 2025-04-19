@@ -2,40 +2,36 @@ import { onLogout } from "../auth/logout.js";
 import { updateNavbarLinks } from "../../../app.js";
 import { isLoggedIn } from "../../utils/auth.js";
 
-// Update desktop navbar dropdown menu with logout option
-// Add logout icon to mobile navbar
+// Logout logic clearing the session, updating navbar and displaying notification
+function handleLogout(event) {
+  event.preventDefault();
+
+  onLogout();
+  updateNavbarLinks();
+
+  sessionStorage.setItem(
+    "notification",
+    JSON.stringify({
+      type: "success",
+      message: "Logged out successfully!",
+    })
+  );
+
+  window.location.href = "/";
+}
+
+// Attach logout listeners for desktop and mobile
 export function setLogoutListener() {
   if (!isLoggedIn()) return;
 
-  // Desktop logout logic
-  const logoutLink = document.querySelector("#logout-link");
+  const logoutLinks = [
+    document.querySelector("#logout-link"),
+    document.querySelector("#logout-link-mobile"),
+  ];
 
-  if (!logoutLink) return;
-
-  logoutLink.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    onLogout();
-    updateNavbarLinks();
-
-    if (typeof showNotification === "function") {
-      showNotification("success", "Logged out successfully");
+  logoutLinks.forEach((link) => {
+    if (link) {
+      link.addEventListener("click", handleLogout);
     }
-
-    window.location.href = "/";
   });
-
-  // Mobile logout
-  const logoutLinkMobile = document.querySelector("#logout-link-mobile");
-  if (logoutLinkMobile) {
-    logoutLinkMobile.addEventListener("click", (event) => {
-      event.preventDefault();
-      onLogout();
-      updateNavbarLinks();
-      if (typeof showNotification === "function") {
-        showNotification("success", "Logged out successfully");
-      }
-      window.location.href = "/";
-    });
-  }
 }

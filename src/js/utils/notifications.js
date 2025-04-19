@@ -18,5 +18,5 @@ export function showNotification(message, type = "success") {
       notification.classList.add("fade");
       setTimeout(() => notification.remove(), 150);
     }
-  }, 6000);
+  }, 5000);
 }
