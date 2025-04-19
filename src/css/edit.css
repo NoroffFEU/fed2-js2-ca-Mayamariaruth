@@ -1,0 +1,30 @@
+.edit-form {
+  border: solid var(--secondary) 1px !important;
+  background-color: var(--primary);
+  width: 70%;
+  height: auto;
+}
+
+#post-body,
+#post-image {
+  background-color: var(--form-fields);
+  border: solid 1px var(--secondary);
+}
+
+#post-body:focus,
+#post-image:focus {
+  background-color: var(--background);
+  border: solid 2px var(--secondary);
+  box-shadow: none;
+}
+
+#post-image::placeholder {
+  color: #737373;
+}
+
+@media (min-width: 768px) {
+  .edit-form {
+    width: 600px;
+    height: auto;
+  }
+}
