@@ -1,6 +1,7 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
 
+// Authenticates create post logic with access token
 export async function createPost({ title, body, media }) {
   const accessToken = localStorage.getItem("accessToken");
 

@@ -7,13 +7,19 @@ import {
   loadAboutModal,
   aboutModalTrigger,
 } from "./js/ui/global/aboutModal.js";
+import { renderCreatePostForm } from "./js/ui/post/create.js";
 
 await router(window.location.pathname);
+// Logout function call
 setLogoutListener();
+// Navbar function calls
 updateNavbarLinks();
 setActiveLink();
+// About modal function calls
 await loadAboutModal();
 aboutModalTrigger();
+// Create post function call
+renderCreatePostForm();
 
 // Update active styling class on navbar links
 function setActiveLink() {
