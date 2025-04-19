@@ -1,6 +1,6 @@
 @import url(_reset.css);
-@import url(auth.css);
 @import url(aboutModal.css);
+@import url(auth.css);
 @import url(edit.css);
 @import url(profile.css);
 
@@ -43,6 +43,7 @@ header {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.7rem;
+  font-weight: 500;
 }
 
 .search {
