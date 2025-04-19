@@ -1,0 +1,17 @@
+.modal-content {
+  background-color: var(--secondary);
+  color: #ffffff;
+}
+
+#logo-heading {
+  font-family: "Italiana", sans-serif;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--accent), #ffd500 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-color {
+  color: var(--accent);
+}
