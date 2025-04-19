@@ -46,9 +46,45 @@ export async function renderCreatePostForm() {
       </div>
     </div>
   `;
+
+  const form = document.getElementById("create-post-form");
+  if (form) {
+    form.addEventListener("submit", onCreatePost);
+  }
 }
 
 // Create post form submission logic
 export async function onCreatePost(event) {
   event.preventDefault();
+
+  const form = event.target;
+  const title = form.title.value.trim();
+  const body = form.body.value.trim();
+  const mediaUrl = form.mediaUrl.value.trim();
+  const mediaAlt = form.mediaAlt.value.trim();
+
+  const postData = {
+    title,
+    body,
+  };
+
+  if (mediaUrl) {
+    postData.media = {
+      url: mediaUrl,
+      alt: mediaAlt || "Post image",
+    };
+  }
+
+  try {
+    await createPost(postData);
+    showNotification("Post created successfully!", "success");
+    form.reset();
+    bootstrap.Modal.getInstance(
+      document.getElementById("create-post-modal")
+    ).hide();
+
+    // loadPosts();
+  } catch (error) {
+    showNotification(error.message, "error");
+  }
 }
