@@ -1,6 +1,6 @@
 import { isLoggedIn } from "../../utils/auth.js";
 import { createPost } from "../../api/post/create.js";
-// import { readProfile } from "../../api/profile/read.js";
+import { readProfile } from "../../api/profile/read.js";
 import { showNotification } from "../../utils/notifications.js";
 
 // Render the create post form on home page for logged in users
@@ -10,7 +10,10 @@ export async function renderCreatePostForm() {
   const container = document.getElementById("create-post-container");
   if (!container) return;
 
-  // const user = await readProfile();
+  const profile = JSON.parse(localStorage.getItem("profile"));
+  const username = profile?.name;
+  if (!username) return;
+  const user = await readProfile(username);
 
   container.innerHTML = `
     <div class="post-box shadow rounded p-3 mb-4">
@@ -83,7 +86,7 @@ export async function onCreatePost(event) {
       document.getElementById("create-post-modal")
     ).hide();
 
-    // loadPosts();
+    // loadPosts(); WILL ADD FUNCTION LATER
   } catch (error) {
     showNotification(error.message, "error");
   }
