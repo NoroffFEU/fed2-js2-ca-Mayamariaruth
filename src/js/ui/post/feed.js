@@ -1,1 +1,1 @@
-export async loadPosts() {}
+export async function loadPosts() {}
