@@ -9,14 +9,18 @@ export async function displayUserProfile() {
   try {
     const user = await readProfile(username);
 
-    document.getElementById("profile-username").textContent = user.name;
-    document.getElementById("profile-email").textContent = user.email;
-    document.getElementById("profile-bio").textContent =
-      user.bio || "No bio provided";
-    document.getElementById("profile-avatar").src =
-      user.avatar?.url || "/images/default-avatar.png";
-    document.getElementById("profile-avatar").alt =
-      user.avatar?.alt || "User avatar";
+    const profileUsername = document.getElementById("profile-username");
+    const profileEmail = document.getElementById("profile-email");
+    const profileBio = document.getElementById("profile-bio");
+    const profileAvatar = document.getElementById("profile-avatar");
+
+    if (profileUsername) profileUsername.textContent = user.name;
+    if (profileEmail) profileEmail.textContent = user.email;
+    if (profileBio) profileBio.textContent = user.bio || "No bio provided";
+    if (profileAvatar) {
+      profileAvatar.src = user.avatar?.url || "/images/default-avatar.png";
+      profileAvatar.alt = user.avatar?.alt || "User avatar";
+    }
   } catch (error) {
     console.error("Error loading profile:", error);
   }

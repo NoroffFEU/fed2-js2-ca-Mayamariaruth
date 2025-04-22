@@ -1,0 +1,17 @@
+#feed-boxes {
+  background-color: var(--primary);
+  width: 95%;
+  margin: 30px auto;
+  border-radius: 15px;
+  padding: 22px 12px;
+}
+
+#create-form-field {
+  background-color: var(--form-fields);
+  border: solid 1px var(--secondary);
+  border-radius: 12px;
+}
+
+#create-form-field::placeholder {
+  color: #737373;
+}

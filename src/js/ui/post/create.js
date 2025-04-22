@@ -16,7 +16,7 @@ export async function renderCreatePostForm() {
   const user = await readProfile(username);
 
   container.innerHTML = `
-    <div class="post-box shadow rounded p-3 mb-4">
+    <div id="feed-boxes">
       <div class="d-flex align-items-center mb-3">
         <img src="${user.avatar?.url || "/images/default-avatar.png"}" alt="${
     user.avatar?.alt || "User avatar"
@@ -24,7 +24,7 @@ export async function renderCreatePostForm() {
         <strong>${user.name}</strong>
       </div>
       <div>
-        <input type="text" class="form-control" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#createPostModal" readonly />
+        <input id="create-form-field" type="text" class="form-control" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
       </div>
     </div>
 
@@ -33,8 +33,8 @@ export async function renderCreatePostForm() {
       <div class="modal-dialog">
         <form id="create-post-form" class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title h5" id="create-post-modal-label">Create Post</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h2 class="modal-title" id="create-post-modal-label">Create Post</h2>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <input type="text" name="title" class="form-control mb-3" placeholder="Title" required />
