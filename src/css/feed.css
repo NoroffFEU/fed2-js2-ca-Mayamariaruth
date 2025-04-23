@@ -1,8 +1,7 @@
 #feed-boxes {
   background-color: var(--primary);
   width: 95%;
-  margin: 30px auto;
-  border-radius: 15px;
+  margin: 0 auto;
   padding: 22px 12px;
 }
 

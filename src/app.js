@@ -1,9 +1,14 @@
+// Global styles
 import "./css/style.css";
+
+// Utilities
 import router from "./js/router";
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
-import { setLogoutListener } from "./js/ui/global/logout.js";
 import { isLoggedIn } from "./js/utils/auth.js";
 import { showNotification } from "./js/utils/notifications.js";
+
+// Global UI
+import { setLogoutListener } from "./js/ui/global/logout.js";
 import {
   loadAboutModal,
   aboutModalTrigger,
@@ -12,24 +17,25 @@ import { renderCreatePostForm } from "./js/ui/post/create.js";
 import { displayUserProfile } from "./js/ui/profile/read.js";
 import { loadPosts } from "./js/ui/post/read.js";
 
-// Restrict access to pages if not logged in (before router call)
+// Restrict access to protected pages before routing
 protectRoutes();
 
+// Route and load the current page
 await router(window.location.pathname);
-// Logout function call
+
+// Global event listeners and UI updates
 setLogoutListener();
-// Navbar function calls
 updateNavbarLinks();
 setActiveLink();
-// About modal function calls
 await loadAboutModal();
 aboutModalTrigger();
-// Create post function call
-renderCreatePostForm();
-// Display user profile details function call
-displayUserProfile();
-// Display all posts function call
-loadPosts();
+
+// Render conditional content
+if (isLoggedIn()) {
+  renderCreatePostForm();
+  displayUserProfile();
+  loadPosts();
+}
 
 // Update active styling class on navbar links
 function setActiveLink() {

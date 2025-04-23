@@ -10,7 +10,7 @@ export async function loadPosts() {
     for (const post of posts) {
       const feedBox = document.createElement("div");
       feedBox.id = "feed-boxes";
-      feedBox.className = "post-box shadow rounded p-3 mb-4";
+      feedBox.className = "post-box shadow rounded-3 p-3 mb-3";
 
       feedBox.innerHTML = `
     <div class="d-flex align-items-center mb-3">
