@@ -6,7 +6,6 @@ export async function loginUser({ email, password }) {
   const credentials = { email, password };
 
   const reqHeaders = headers();
-  reqHeaders.append("Content-Type", "application/json");
 
   try {
     const response = await fetch(API_AUTH_LOGIN, {

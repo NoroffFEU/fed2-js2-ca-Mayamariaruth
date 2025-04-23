@@ -25,7 +25,7 @@ export async function renderCreatePostForm() {
         <strong>${user.name}</strong>
       </div>
       <div>
-        <input id="create-form-field" type="text" class="form-control" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
+        <input id="create-form-field" type="text" class="form-control rounded-3" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
       </div>
     </div>
 
@@ -38,10 +38,10 @@ export async function renderCreatePostForm() {
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="text" name="title" class="form-control mb-3" placeholder="Title" required />
-            <textarea name="body" class="form-control mb-3" placeholder="Write your post..." rows="10"></textarea>
-            <input type="url" name="mediaUrl" class="form-control mb-3" placeholder="Image URL (optional)" />
-            <input type="text" name="mediaAlt" class="form-control mb-3" placeholder="Image alt text (optional)" />
+            <input type="text" name="title" class="form-control mb-3 rounded-3" placeholder="Title" required />
+            <textarea name="body" class="form-control mb-3 rounded-3" placeholder="Write your post..." rows="10"></textarea>
+            <input type="url" name="mediaUrl" class="form-control mb-3 rounded-3" placeholder="Image URL (optional)" />
+            <input type="text" name="mediaAlt" class="form-control mb-3 rounded-3" placeholder="Image alt text (optional)" />
           </div>
           <div class="modal-footer">
             <button type="submit" class="submit-btn">Post</button>

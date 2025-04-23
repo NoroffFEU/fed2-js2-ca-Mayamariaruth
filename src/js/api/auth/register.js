@@ -6,7 +6,6 @@ export async function registerUser(username, email, password) {
   const userData = { name: username, email, password };
 
   const reqHeaders = headers();
-  reqHeaders.append("Content-Type", "application/json");
 
   try {
     const response = await fetch(API_AUTH_REGISTER, {

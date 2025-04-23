@@ -1,5 +1,6 @@
 import "./css/style.css";
 import router from "./js/router";
+import { protectRoutes } from "./js/utils/protectedRoutes.js";
 import { setLogoutListener } from "./js/ui/global/logout.js";
 import { isLoggedIn } from "./js/utils/auth.js";
 import { showNotification } from "./js/utils/notifications.js";
@@ -10,6 +11,9 @@ import {
 import { renderCreatePostForm } from "./js/ui/post/create.js";
 import { displayUserProfile } from "./js/ui/profile/read.js";
 import { loadPosts } from "./js/ui/post/read.js";
+
+// Restrict access to pages if not logged in (before router call)
+protectRoutes();
 
 await router(window.location.pathname);
 // Logout function call
