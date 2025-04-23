@@ -7,6 +7,8 @@ export async function readPost(id) {}
 export async function readPosts() {
   const url = new URL(API_SOCIAL_POSTS);
 
+  url.searchParams.append("_author", "true");
+
   const res = await fetch(url, {
     headers: headers(),
   });

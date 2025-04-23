@@ -12,16 +12,16 @@ export async function loadPosts() {
       feedBox.id = "feed-boxes";
       feedBox.className = "post-box shadow rounded p-3 mb-4";
 
-      const author = post.author || {};
-      const avatarUrl =
-        post.author?.avatar?.url ?? "/images/default-avatar.png";
-      const avatarAlt = post.author?.avatar?.alt || "User avatar";
-      const authorName = author.name || author.username || "Unknown Author";
-
       feedBox.innerHTML = `
     <div class="d-flex align-items-center mb-3">
-      <img src="${avatarUrl}" alt="${avatarAlt}" class="rounded-circle me-2" width="40" height="40">
-      <strong>${authorName}</strong>
+      <img src="${
+        post.author.avatar?.url ?? "/images/default-avatar.png"
+      }" alt="${
+        post.author.avatar?.alt || "User avatar"
+      }" class="rounded-circle me-2" width="40" height="40">
+    <strong>${
+      post.author.name || post.author.username || "Unknown Author"
+    }</strong>
     </div>
     <div>
       <p class="fw-bold h5">${post.title}</p>
