@@ -1,6 +1,7 @@
 import { isLoggedIn } from "../../utils/auth.js";
 import { createPost } from "../../api/post/create.js";
 import { readProfile } from "../../api/profile/read.js";
+import { loadPosts } from "./read.js";
 import { showNotification } from "../../utils/notifications.js";
 
 // Render the create post form on home page for logged in users
@@ -71,10 +72,10 @@ export async function onCreatePost(event) {
     body,
   };
 
-  if (mediaUrl) {
+  if (mediaUrl && mediaAlt) {
     postData.media = {
       url: mediaUrl,
-      alt: mediaAlt || "Post image",
+      alt: mediaAlt,
     };
   }
 
@@ -86,7 +87,7 @@ export async function onCreatePost(event) {
       document.getElementById("create-post-modal")
     ).hide();
 
-    // loadPosts(); WILL ADD FUNCTION LATER
+    await loadPosts();
   } catch (error) {
     showNotification(error.message, "error");
   }

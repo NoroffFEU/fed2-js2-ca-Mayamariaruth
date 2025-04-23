@@ -9,6 +9,7 @@ import {
 } from "./js/ui/global/aboutModal.js";
 import { renderCreatePostForm } from "./js/ui/post/create.js";
 import { displayUserProfile } from "./js/ui/profile/read.js";
+import { loadPosts } from "./js/ui/post/read.js";
 
 await router(window.location.pathname);
 // Logout function call
@@ -23,6 +24,8 @@ aboutModalTrigger();
 renderCreatePostForm();
 // Display user profile details function call
 displayUserProfile();
+// Display all posts function call
+loadPosts();
 
 // Update active styling class on navbar links
 function setActiveLink() {

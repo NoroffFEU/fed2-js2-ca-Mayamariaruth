@@ -12,12 +12,14 @@ export async function createPost({ title, body, media }) {
   const postData = {
     title,
     body,
-    media,
   };
+
+  if (media && media.url) {
+    postData.media = media;
+  }
 
   try {
     const requestHeaders = headers();
-    requestHeaders.append("Authorization", `Bearer ${accessToken}`);
 
     const response = await fetch(API_SOCIAL_POSTS, {
       method: "POST",
@@ -32,6 +34,7 @@ export async function createPost({ title, body, media }) {
     const responseData = await response.json();
     return responseData.data;
   } catch (error) {
+    console.error("Error creating post:", error);
     throw new Error(`Failed to create post: ${error.message}`);
   }
 }
