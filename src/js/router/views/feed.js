@@ -1,5 +1,5 @@
-import { onCreatePost } from "../../ui/post/create.js";
+import { renderCreatePostForm } from "../../ui/post/create.js";
+import { loadPosts } from "../../ui/post/feed.js";
 
-const form = document.forms.createPostForm;
-
-form.addEventListener("submit", onCreatePost);
+renderCreatePostForm();
+loadPosts();

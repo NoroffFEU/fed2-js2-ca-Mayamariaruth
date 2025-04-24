@@ -1,5 +1,5 @@
 import { readPosts } from "../../api/post/feed.js";
-import { onOpenEditModal } from "./update.js";
+import { onOpenEditModal } from "./edit.js";
 
 // Display all posts in home feed
 export async function loadPosts() {

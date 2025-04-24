@@ -34,6 +34,11 @@ export function onOpenEditModal(event) {
     `;
 
   document.body.insertAdjacentHTML("beforeend", modalHtml);
+  const form = document.getElementById("edit-post-form");
+  if (form) {
+    form.addEventListener("submit", onEditPost);
+  }
+
   // Set mediaUrl and mediaAlt input values after modal is inserted
   const modalElement = document.getElementById("edit-post-modal");
   modalElement.querySelector('input[name="mediaUrl"]').value = mediaUrl;

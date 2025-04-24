@@ -13,9 +13,6 @@ import {
   loadAboutModal,
   aboutModalTrigger,
 } from "./js/ui/global/aboutModal.js";
-import { renderCreatePostForm } from "./js/ui/post/create.js";
-import { displayUserProfile } from "./js/ui/profile/read.js";
-import { loadPosts } from "./js/ui/post/feed.js";
 
 // Restrict access to protected pages before routing
 protectRoutes();
@@ -29,13 +26,6 @@ updateNavbarLinks();
 setActiveLink();
 await loadAboutModal();
 aboutModalTrigger();
-
-// Render conditional content
-if (isLoggedIn()) {
-  renderCreatePostForm();
-  displayUserProfile();
-  loadPosts();
-}
 
 // Update active styling class on navbar links
 function setActiveLink() {

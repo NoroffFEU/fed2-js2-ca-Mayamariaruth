@@ -32,7 +32,7 @@ export async function renderCreatePostForm() {
     <!-- Modal -->
     <div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="create-post-modal-label">
       <div class="modal-dialog">
-        <form name="createPostForm" id="create-post-form" class="modal-content">
+        <form id="create-post-form" class="modal-content">
           <div class="modal-header">
             <h2 class="modal-title" id="create-post-modal-label">Create Post</h2>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -50,6 +50,11 @@ export async function renderCreatePostForm() {
       </div>
     </div>
   `;
+
+  const form = document.getElementById("create-post-form");
+  if (form) {
+    form.addEventListener("submit", onCreatePost);
+  }
 }
 
 // Create post form submission logic
