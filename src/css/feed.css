@@ -3,13 +3,18 @@
   width: 95%;
   margin: 0 auto;
   padding: 22px 12px;
+  max-width: 1400px;
 }
 
-#create-form-field {
+.create-form-field {
   background-color: var(--form-fields);
-  border: solid 1px var(--secondary);
 }
 
-#create-form-field::placeholder {
+.create-form-field::placeholder {
   color: #737373;
+}
+
+.create-form-field:focus {
+  box-shadow: none;
+  border: solid 2px var(--accent) !important;
 }

@@ -8,10 +8,10 @@
 /* General styling */
 :root {
   --background: #101010;
-  --primary: #222222;
+  --primary: #303030;
   --secondary: #474747;
   --accent: #00c853;
-  --form-fields: #1a1a1a;
+  --form-fields: #fff;
   --font-size-base: 16px;
 }
 
@@ -32,8 +32,11 @@ header {
 
 .main-forms input {
   background-color: var(--form-fields);
-  border: solid 1px var(--secondary);
-  color: #ffffff !important;
+}
+
+.main-forms input:focus {
+  box-shadow: none;
+  border: solid 2px var(--accent);
 }
 
 /* Navigation bar */
@@ -59,7 +62,7 @@ header {
 
 .search:focus {
   outline: none;
-  border: solid 2px var(--secondary);
+  border: solid 2px var(--form-fields);
   background-color: var(--primary);
   color: #ffffff;
   box-shadow: none;

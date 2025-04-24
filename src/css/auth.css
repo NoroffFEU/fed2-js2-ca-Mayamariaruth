@@ -1,18 +1,13 @@
 .auth-form {
-  border: solid var(--secondary) 1px !important;
+  border: none !important;
   background-color: var(--primary);
   width: 70%;
   height: 420px;
+  border-radius: 12px;
 }
 
 #register-form {
   height: 480px;
-}
-
-#email:focus,
-#password:focus,
-#username:focus {
-  background-color: var(--background);
 }
 
 .submit-btn {
@@ -32,7 +27,7 @@
 .link-btn {
   color: #ffffff;
   width: 100%;
-  border: solid 1px var(--secondary);
+  border: solid 2px var(--secondary);
   border-radius: 8px;
   padding: 8px 0;
   background-color: transparent;

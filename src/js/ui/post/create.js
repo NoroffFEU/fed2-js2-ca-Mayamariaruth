@@ -25,12 +25,12 @@ export async function renderCreatePostForm() {
         <strong>${user.name}</strong>
       </div>
       <div>
-        <input id="create-form-field" type="text" class="form-control rounded-3" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
+        <input type="text" class="form-control rounded-3 create-form-field" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
       </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="create-post-modal-label" aria-hidden="true">
+    <div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="create-post-modal-label">
       <div class="modal-dialog">
         <form id="create-post-form" class="modal-content">
           <div class="modal-header">
@@ -38,10 +38,10 @@ export async function renderCreatePostForm() {
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="text" name="title" class="form-control mb-3 rounded-3" placeholder="Title" required />
-            <textarea name="body" class="form-control mb-3 rounded-3" placeholder="Write your post..." rows="10"></textarea>
-            <input type="url" name="mediaUrl" class="form-control mb-3 rounded-3" placeholder="Image URL (optional)" />
-            <input type="text" name="mediaAlt" class="form-control mb-3 rounded-3" placeholder="Image alt text (optional)" />
+            <input type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" placeholder="Title" required />
+            <textarea name="body" class="form-control mb-3 rounded-3 create-form-field" placeholder="Write your post..." rows="10" required></textarea>
+            <input type="url" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
+            <input type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
           </div>
           <div class="modal-footer">
             <button type="submit" class="submit-btn">Post</button>
