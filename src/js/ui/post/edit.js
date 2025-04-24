@@ -1,4 +1,4 @@
-import { updatePost } from "../../api/post/update.js";
+import { editPost } from "../../api/post/edit.js";
 
 // Display the edit post modal with pre-populated form fields
 export function onOpenEditModal(event) {
@@ -14,7 +14,7 @@ export function onOpenEditModal(event) {
   const modalHtml = `
       <div class="modal fade" id="edit-post-modal" tabindex="-1">
         <div class="modal-dialog">
-          <form id="edit-post-form" class="modal-content" data-id="${postId}">
+          <form name="editPostForm" id="edit-post-form" class="modal-content" data-id="${postId}">
             <div class="modal-header">
               <h2 class="modal-title">Edit Post</h2>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -40,10 +40,6 @@ export function onOpenEditModal(event) {
   modalElement.querySelector('input[name="mediaAlt"]').value = mediaAlt;
 
   new bootstrap.Modal(document.getElementById("edit-post-modal")).show();
-
-  document
-    .getElementById("edit-post-form")
-    .addEventListener("submit", onUpdatePost);
 }
 
-export async function onUpdatePost(event) {}
+export async function onEditPost(event) {}

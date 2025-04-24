@@ -15,7 +15,7 @@ import {
 } from "./js/ui/global/aboutModal.js";
 import { renderCreatePostForm } from "./js/ui/post/create.js";
 import { displayUserProfile } from "./js/ui/profile/read.js";
-import { loadPosts } from "./js/ui/post/read.js";
+import { loadPosts } from "./js/ui/post/feed.js";
 
 // Restrict access to protected pages before routing
 protectRoutes();

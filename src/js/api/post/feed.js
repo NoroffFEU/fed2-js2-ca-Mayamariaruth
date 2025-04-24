@@ -1,6 +1,7 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
 
+// Fetch individual post from API
 export async function readPost(id) {}
 
 // Fetch all created posts from API

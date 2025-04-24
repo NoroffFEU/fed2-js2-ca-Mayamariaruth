@@ -1,4 +1,4 @@
-import { readPosts } from "../../api/post/read.js";
+import { readPosts } from "../../api/post/feed.js";
 import { onOpenEditModal } from "./update.js";
 
 // Display all posts in home feed

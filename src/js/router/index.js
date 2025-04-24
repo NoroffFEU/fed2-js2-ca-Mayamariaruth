@@ -5,7 +5,7 @@ export default async function router(pathname = window.location.pathname) {
   switch (pathname) {
     case "/index.html":
     case "/":
-      await import("./views/home.js");
+      await import("./views/feed.js");
       break;
     case "/auth/login/":
       await import("./views/login.js");
