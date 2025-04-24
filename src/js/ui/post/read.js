@@ -1,4 +1,5 @@
 import { readPosts } from "../../api/post/read.js";
+import { onOpenEditModal } from "./update.js";
 
 // Display all posts in home feed
 export async function loadPosts() {
@@ -36,13 +37,13 @@ export async function loadPosts() {
       }
     </div>
     <div>
-      <p class="fw-bold h5">${post.title}</p>
-      <p>${post.body || ""}</p>
+      <p class="post-title fw-bold h5">${post.title}</p>
+      <p class="post-body">${post.body || ""}</p>
       ${
         post.media?.url
           ? `<img src="${post.media.url}" alt="${
               post.media.alt || "Post image"
-            }" class="img-fluid mt-2" />`
+            }" class="post-image img-fluid mt-2" />`
           : ""
       }
     </div>
