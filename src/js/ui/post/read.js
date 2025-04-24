@@ -11,17 +11,29 @@ export async function loadPosts() {
       const feedBox = document.createElement("div");
       feedBox.id = "feed-boxes";
       feedBox.className = "post-box shadow rounded-3 p-3 mb-3";
+      // Add edit/delete buttons to logged in users posts
+      const currentUser = JSON.parse(localStorage.getItem("profile"))?.name;
 
       feedBox.innerHTML = `
-    <div class="d-flex align-items-center mb-3">
-      <img src="${
-        post.author.avatar?.url ?? "/images/default-avatar.png"
-      }" alt="${
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex align-items-center">
+        <img src="${
+          post.author.avatar?.url ?? "/images/default-avatar.png"
+        }" alt="${
         post.author.avatar?.alt || "User avatar"
-      }" class="rounded-circle me-2" width="40" height="40">
-    <strong>${
-      post.author.name || post.author.username || "Unknown Author"
-    }</strong>
+      }" class="rounded-circle me-2 user-avatar">
+      <strong>${
+        post.author.name || post.author.username || "Unknown Author"
+      }</strong>
+      </div>
+      ${
+        post.author.name === currentUser
+          ? `<div>
+               <button class="btn btn-sm me-2 edit-post-btn rounded-2" data-id="${post.id}"><i class="fa-solid fa-pen"></i></button>
+               <button class="btn btn-sm btn-outline-danger delete-post-btn rounded-2" data-id="${post.id}" data-title="${post.title}"><i class="fa-solid fa-trash-can"></i></button>
+             </div>`
+          : ""
+      }
     </div>
     <div>
       <p class="fw-bold h5">${post.title}</p>
@@ -38,6 +50,14 @@ export async function loadPosts() {
 
       container.appendChild(feedBox);
     }
+
+    // Attach event listeners for edit/delete buttons after all posts are loaded
+    document
+      .querySelectorAll(".edit-post-btn")
+      .forEach((btn) => btn.addEventListener("click", onOpenEditModal));
+    document
+      .querySelectorAll(".delete-post-btn")
+      .forEach((btn) => btn.addEventListener("click", onOpenDeleteModal));
   } catch (error) {
     console.error("Failed to load posts:", error);
   }

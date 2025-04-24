@@ -21,7 +21,7 @@ export async function renderCreatePostForm() {
       <div class="d-flex align-items-center mb-3">
         <img src="${user.avatar?.url || "/images/default-avatar.png"}" alt="${
     user.avatar?.alt || "User avatar"
-  }" class="rounded-circle me-2" width="40" height="40">
+  }" class="rounded-circle me-2 user-avatar">
         <strong>${user.name}</strong>
       </div>
       <div>
