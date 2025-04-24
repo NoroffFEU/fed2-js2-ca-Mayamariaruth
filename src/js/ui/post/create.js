@@ -38,9 +38,9 @@ export async function renderCreatePostForm() {
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" placeholder="Title" required />
-            <textarea name="body" class="form-control mb-3 rounded-3 create-form-field" placeholder="Write your post..." rows="10" required></textarea>
-            <input type="url" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
+            <input type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" placeholder="Title" />
+            <textarea name="body" class="form-control mb-3 rounded-3 create-form-field" placeholder="Write your post..." rows="10"></textarea>
+            <input type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
             <input type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
           </div>
           <div class="modal-footer">
@@ -67,6 +67,39 @@ export async function onCreatePost(event) {
   const mediaUrl = form.mediaUrl.value.trim();
   const mediaAlt = form.mediaAlt.value.trim();
 
+  const errors = [];
+
+  // Title validation
+  if (!title || title.length < 3) {
+    errors.push("Title must be at least 3 characters long.");
+  }
+
+  // Body text validation
+  if (!body || body.length < 3) {
+    errors.push("Post text must be at least 3 characters long.");
+  }
+
+  // Image URL and alt text validation
+  if (mediaUrl && mediaAlt) {
+    const imageRegex = /\.(jpeg|jpg|gif|png|webp)$/i;
+    try {
+      new URL(mediaUrl);
+      if (!imageRegex.test(mediaUrl)) {
+        errors.push("Image URL must end in .jpg, .png, .gif, or .webp.");
+      }
+    } catch {
+      errors.push("Image URL must be a valid URL.");
+    }
+  } else if (mediaUrl || mediaAlt) {
+    errors.push("Both image URL and alt text are required if one is provided.");
+  }
+
+  // Display all errors in the notification
+  if (errors.length > 0) {
+    showNotification(errors.join(" "), "error");
+    return;
+  }
+
   const postData = {
     title,
     body,
@@ -86,7 +119,6 @@ export async function onCreatePost(event) {
     bootstrap.Modal.getInstance(
       document.getElementById("create-post-modal")
     ).hide();
-
     await loadPosts();
   } catch (error) {
     showNotification(error.message, "error");

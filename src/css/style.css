@@ -26,6 +26,10 @@ header {
   border-bottom: solid 1px var(--secondary);
 }
 
+#notifications {
+  z-index: 1080;
+}
+
 .main-heading {
   font-size: 32px;
 }
