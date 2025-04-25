@@ -1,4 +1,5 @@
 import { editPost } from "../../api/post/edit.js";
+import { showNotification } from "../../utils/notifications.js";
 
 // Display the edit post modal with pre-populated form fields
 export function onOpenEditModal(event) {
@@ -20,10 +21,10 @@ export function onOpenEditModal(event) {
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <input type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" value="${title}" />
-              <textarea name="body" class="form-control mb-3 rounded-3 create-form-field" rows="10">${body}</textarea>
-              <input type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
-              <input type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
+              <input id="edit-title" type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" value="${title}" />
+              <textarea id="edit-body" name="body" class="form-control mb-3 rounded-3 create-form-field" rows="10">${body}</textarea>
+              <input id="edit-media-url" type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
+              <input id="edit-media-alt" type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn submit-btn">Save changes</button>
@@ -34,17 +35,57 @@ export function onOpenEditModal(event) {
     `;
 
   document.body.insertAdjacentHTML("beforeend", modalHtml);
-  const form = document.getElementById("edit-post-form");
-  if (form) {
-    form.addEventListener("submit", onEditPost);
-  }
 
-  // Set mediaUrl and mediaAlt input values after modal is inserted
   const modalElement = document.getElementById("edit-post-modal");
-  modalElement.querySelector('input[name="mediaUrl"]').value = mediaUrl;
-  modalElement.querySelector('input[name="mediaAlt"]').value = mediaAlt;
 
-  new bootstrap.Modal(document.getElementById("edit-post-modal")).show();
+  // Set media url/alt input values after modal is inserted
+  if (modalElement) {
+    const mediaUrlInput = document.getElementById("edit-media-url");
+    const mediaAltInput = document.getElementById("edit-media-alt");
+
+    if (mediaUrlInput) mediaUrlInput.value = mediaUrl;
+    if (mediaAltInput) mediaAltInput.value = mediaAlt;
+
+    // Form submission eventListener
+    const form = document.getElementById("edit-post-form");
+    if (form) {
+      form.addEventListener("submit", onEditPost);
+    }
+
+    new bootstrap.Modal(modalElement).show();
+  }
 }
 
-export async function onEditPost(event) {}
+// Handle form submission for editing post
+export async function onEditPost(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const postId = form.dataset.id;
+
+  const title = document.getElementById("edit-title").value.trim();
+  const body = document.getElementById("edit-body").value.trim();
+  const mediaUrl = document.getElementById("edit-media-url").value.trim();
+  const mediaAlt = document.getElementById("edit-media-alt").value.trim();
+
+  const updatedPost = {
+    title,
+    body,
+    media: mediaUrl ? { url: mediaUrl, alt: mediaAlt } : undefined,
+  };
+
+  try {
+    await editPost(postId, updatedPost);
+    showNotification("Post updated successfully!", "success");
+
+    const modalElement = document.getElementById("edit-post-modal");
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) modalInstance.hide();
+
+    modalElement.remove();
+  } catch (error) {
+    const message =
+      error.message || "Something went wrong while updating the post.";
+    showNotification(message, "error");
+  }
+}
