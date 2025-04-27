@@ -1,4 +1,5 @@
 import { readPosts } from "../../api/post/feed.js";
+import { onOpenDeleteModal } from "./delete.js";
 import { onOpenEditModal } from "./edit.js";
 
 // Display all posts in home feed

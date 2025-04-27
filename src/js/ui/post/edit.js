@@ -34,6 +34,7 @@ export function onOpenEditModal(event) {
       </div>
     `;
 
+  // Insert modal into the body
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 
   const modalElement = document.getElementById("edit-post-modal");
