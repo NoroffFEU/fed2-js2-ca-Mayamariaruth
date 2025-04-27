@@ -2,7 +2,7 @@ import { deletePost } from "../../api/post/delete.js";
 import { loadPosts } from "./feed.js";
 import { showNotification } from "../../utils/notifications.js";
 
-// Display the delete modal
+// Displays the delete confirmation modal
 export function onOpenDeleteModal(event) {
   const button = event.currentTarget;
   const postId = button.dataset.id;
@@ -45,7 +45,7 @@ export function onOpenDeleteModal(event) {
   }
 }
 
-// Handle deletion submission to API
+// Handles the deletion of a post when confirmed
 async function onDeletePost(event) {
   const button = event.currentTarget;
   const postId = button.dataset.id;

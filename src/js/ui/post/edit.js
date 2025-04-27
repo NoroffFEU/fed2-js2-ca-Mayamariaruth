@@ -1,7 +1,7 @@
 import { editPost } from "../../api/post/edit.js";
 import { showNotification } from "../../utils/notifications.js";
 
-// Display the edit post modal with pre-populated form fields
+// Displays the edit post modal with pre-populated form fields
 export function onOpenEditModal(event) {
   const postId = event.currentTarget.dataset.id;
   const postBox = event.target.closest(".post-box");
@@ -57,7 +57,7 @@ export function onOpenEditModal(event) {
   }
 }
 
-// Handle form submission for editing post
+// Handles the editing of a post when confirmed
 export async function onEditPost(event) {
   event.preventDefault();
 
