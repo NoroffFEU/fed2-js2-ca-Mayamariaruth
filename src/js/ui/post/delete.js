@@ -45,4 +45,25 @@ export function onOpenDeleteModal(event) {
   }
 }
 
-async function onDeletePost(event) {}
+// Handle deletion submission to API
+async function onDeletePost(event) {
+  const button = event.currentTarget;
+  const postId = button.dataset.id;
+
+  try {
+    await deletePost(postId);
+    showNotification("Post deleted successfully!", "success");
+
+    // Close and remove the modal
+    const modalElement = document.getElementById("delete-post-modal");
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) modalInstance.hide();
+    modalElement.remove();
+
+    await loadPosts();
+  } catch (error) {
+    const message =
+      error.message || "Something went wrong while deleting the post.";
+    showNotification(message, "error");
+  }
+}
