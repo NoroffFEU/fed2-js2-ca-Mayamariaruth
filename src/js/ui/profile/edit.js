@@ -1,10 +1,9 @@
 import { editProfile } from "../../api/profile/edit.js";
+import { showNotification } from "../../utils/notifications.js";
 
 export async function onOpenEditProfileModal() {
   const avatarUrl = document.getElementById("profile-avatar").src;
   const bio = document.getElementById("profile-bio").textContent;
-  const username = document.getElementById("profile-username").textContent;
-  const email = document.getElementById("profile-email").textContent;
 
   // Create the edit profile modal HTML
   const modalHtml = `
@@ -17,14 +16,6 @@ export async function onOpenEditProfileModal() {
           </div>
           <div class="modal-body">
             <form id="edit-profile-form">
-              <div class="mb-3">
-                <label for="edit-username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="edit-username" name="username" placeholder="Enter your username" value="${username}">
-              </div>
-              <div class="mb-3">
-                <label for="edit-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="edit-email" name="email" placeholder="Enter your email" value="${email}">
-              </div>
               <div class="mb-3">
                 <label for="avatar-url" class="form-label">Avatar URL</label>
                 <input type="text" class="form-control" id="avatar-url" name="avatar" placeholder="Enter avatar image URL" value="${avatarUrl}">
@@ -56,6 +47,30 @@ export async function onOpenEditProfileModal() {
   }
 }
 
+// Handles the editing of profile details when confirmed
 async function onEditProfile(event) {
   event.preventDefault();
+
+  const username = document.getElementById("profile-username").textContent;
+  const avatar = document.getElementById("avatar-url").value;
+  const bio = document.getElementById("bio").value;
+
+  try {
+    await editProfile(username, { avatar, bio });
+    showNotification("Profile updated successfully!", "success");
+
+    // Close the modal
+    const modalInstance = bootstrap.Modal.getInstance(
+      document.getElementById("update-profile-modal")
+    );
+    modalInstance.hide();
+
+    document.getElementById("update-profile-modal").remove();
+
+    // Update profile view with the new data
+    document.getElementById("profile-avatar").src = avatar;
+    document.getElementById("profile-bio").textContent = bio;
+  } catch (error) {
+    showNotification("Failed to update profile.", "error");
+  }
 }
