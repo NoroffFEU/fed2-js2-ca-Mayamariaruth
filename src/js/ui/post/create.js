@@ -81,12 +81,8 @@ export async function onCreatePost(event) {
 
   // Image URL and alt text validation
   if (mediaUrl && mediaAlt) {
-    const imageRegex = /\.(jpeg|jpg|gif|png|webp)$/i;
     try {
       new URL(mediaUrl);
-      if (!imageRegex.test(mediaUrl)) {
-        errors.push("Image URL must end in .jpg, .png, .gif, or .webp.");
-      }
     } catch {
       errors.push("Image URL must be a valid URL.");
     }

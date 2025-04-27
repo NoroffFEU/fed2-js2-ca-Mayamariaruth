@@ -8,6 +8,8 @@ export async function loadPosts() {
     const container = document.getElementById("feed-post-container");
     if (!container) return;
 
+    container.innerHTML = "";
+
     for (const post of posts) {
       const feedBox = document.createElement("div");
       feedBox.id = "feed-boxes";

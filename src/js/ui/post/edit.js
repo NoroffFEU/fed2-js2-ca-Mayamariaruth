@@ -3,7 +3,7 @@ import { showNotification } from "../../utils/notifications.js";
 
 // Display the edit post modal with pre-populated form fields
 export function onOpenEditModal(event) {
-  const postId = event.target.dataset.id;
+  const postId = event.currentTarget.dataset.id;
   const postBox = event.target.closest(".post-box");
   const title = postBox.querySelector(".post-title")?.innerText;
   const body = postBox.querySelector(".post-body")?.innerText;
@@ -78,10 +78,37 @@ export async function onEditPost(event) {
     await editPost(postId, updatedPost);
     showNotification("Post updated successfully!", "success");
 
+    // Update the post DOM
+    const postBox = document
+      .querySelector(`.edit-post-btn[data-id="${postId}"]`)
+      ?.closest(".post-box");
+
+    if (postBox) {
+      postBox.querySelector(".post-title").innerText = title;
+      postBox.querySelector(".post-body").innerText = body;
+
+      const image = postBox.querySelector(".post-image");
+
+      if (mediaUrl) {
+        if (image) {
+          image.src = mediaUrl;
+          image.alt = mediaAlt || "Post image";
+        } else {
+          const newImage = document.createElement("img");
+          newImage.src = mediaUrl;
+          newImage.alt = mediaAlt || "Post image";
+          newImage.className = "post-image img-fluid mt-2";
+          postBox.appendChild(newImage);
+        }
+      } else if (image) {
+        image.remove();
+      }
+    }
+
+    // Close the modal
     const modalElement = document.getElementById("edit-post-modal");
     const modalInstance = bootstrap.Modal.getInstance(modalElement);
     if (modalInstance) modalInstance.hide();
-
     modalElement.remove();
   } catch (error) {
     const message =
