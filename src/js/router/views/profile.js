@@ -1,5 +1,7 @@
-import { onUpdateProfile } from "../../ui/profile/update.js";
+import { displayUserProfile } from "../../ui/profile/read.js";
+import { onOpenEditProfileModal } from "../../ui/profile/edit.js";
 
-const form = document.forms.profileForm;
+displayUserProfile();
 
-form.addEventListener("submit", onUpdateProfile);
+const editProfileBtn = document.getElementById("edit-profile-btn");
+editProfileBtn.addEventListener("click", onOpenEditProfileModal);
