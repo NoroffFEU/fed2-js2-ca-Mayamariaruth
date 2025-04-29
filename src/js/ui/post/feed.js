@@ -25,7 +25,7 @@ export async function loadPosts() {
             }" alt="${
         post.author.avatar?.alt || "User avatar"
       }" class="rounded-circle me-2 user-avatar">
-            <strong>${
+            <strong class="h5 mb-0">${
               post.author.name || post.author.username || "Unknown Author"
             }</strong>
           </div>
@@ -39,9 +39,11 @@ export async function loadPosts() {
           }
         </div>
 
-        <a href="post/?id=${post.id}" class="text-decoration-none text-reset">
-          <div>
-            <p class="post-title fw-bold h5">${post.title}</p>
+        <a href="post/index.html?id=${
+          post.id
+        }" class="text-decoration-none text-reset">
+          <div class="mb-3">
+            <p class="post-title fw-bold h4">${post.title}</p>
             <p class="post-body">${post.body || ""}</p>
             ${
               post.media?.url
@@ -51,6 +53,9 @@ export async function loadPosts() {
                 : ""
             }
           </div>
+          <span>Posted on <strong>${new Date(
+            post.created
+          ).toLocaleDateString()}</strong></span>
         </a>
       `;
 

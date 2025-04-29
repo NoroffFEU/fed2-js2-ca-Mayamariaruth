@@ -8,7 +8,7 @@ export async function displayPost(postId) {
 
     const container = document.getElementById("post-page");
     container.innerHTML = `
-      <div class="card mx-auto my-5 text-white pt-2 post-card">
+      <div class="card mx-auto mb-5 mt-4 text-white pt-1 post-card">
         <div class="card-body">
           <h1 class="card-title mb-3">${post.title}</h1>
           <p class="card-text mb-3 h5">${post.body || ""}</p>
@@ -17,10 +17,10 @@ export async function displayPost(postId) {
                 ? `
               <img src="${post.media?.url}" alt="${
                     post.media?.alt || "Post image"
-                  }" class="img-fluid mb-4"> `
+                  }" class="post-image img-fluid mb-4"> `
                 : ""
             }
-          <div class="mb-3">
+          <div class="mb-2">
             <span>By <strong>${
               post.author?.name || "Unknown Author"
             }</strong></span> | 

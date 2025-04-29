@@ -6,6 +6,7 @@ import router from "./js/router";
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
 import { isLoggedIn } from "./js/utils/auth.js";
 import { showNotification } from "./js/utils/notifications.js";
+import { setupSearch } from "./js/utils/search.js";
 
 // Global UI
 import { setLogoutListener } from "./js/ui/global/logout.js";
@@ -26,6 +27,7 @@ updateNavbarLinks();
 setActiveLink();
 await loadAboutModal();
 aboutModalTrigger();
+setupSearch();
 
 // Update active styling class on navbar links
 function setActiveLink() {

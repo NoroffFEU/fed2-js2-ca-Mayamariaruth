@@ -22,7 +22,7 @@ export async function renderCreatePostForm() {
         <img src="${user.avatar?.url || "/images/default-avatar.png"}" alt="${
     user.avatar?.alt || "User avatar"
   }" class="rounded-circle me-2 user-avatar">
-        <strong>${user.name}</strong>
+        <strong class="h5 mb-0">${user.name}</strong>
       </div>
       <div>
         <input type="text" class="form-control rounded-3 create-form-field" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
