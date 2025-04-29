@@ -1,26 +1,24 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
 
-// Fetch individual post from API
-export async function readPost(id) {}
-
 // Fetch all created posts from API
 export async function readPosts() {
   const url = new URL(API_SOCIAL_POSTS);
 
   url.searchParams.append("_author", "true");
 
-  const res = await fetch(url, {
+  const response = await fetch(url, {
     headers: headers(),
   });
 
-  if (!res.ok) {
-    const error = await res.json();
+  if (!response.ok) {
+    const error = await response.json();
     throw new Error(error.message || "Failed to load posts");
   }
 
-  const { data } = await res.json();
+  const { data } = await response.json();
   return data;
 }
 
+// Fetch all created posts by one author from API
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
