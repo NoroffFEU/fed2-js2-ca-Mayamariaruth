@@ -2,7 +2,7 @@ import { showNotification } from "./notifications.js";
 import { isLoggedIn } from "./auth.js";
 
 // Search handler function
-export async function handleSearch(event) {
+export async function setupSearchEvent(event) {
   event.preventDefault();
   const query = event.target.value.trim();
 

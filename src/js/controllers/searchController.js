@@ -1,5 +1,4 @@
-import { readPosts } from "../api/post/feed.js";
-import { searchPosts } from "../api/post/search.js";
+import { readPosts, searchPosts } from "../api/post/feed.js";
 import { loadPosts } from "../ui/post/feed.js";
 import { showNotification } from "../utils/notifications.js";
 
@@ -21,7 +20,7 @@ export async function handleFeedSearch() {
   }
 }
 
-// Handles search process and UI updates in feed
+// Handle search process and UI updates in feed
 export async function searchFeed() {
   const query = localStorage.getItem("searchQuery");
   const feedback = document.getElementById("search-feedback");

@@ -6,7 +6,7 @@ import router from "./js/router";
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
 import { isLoggedIn } from "./js/utils/auth.js";
 import { showNotification } from "./js/utils/notifications.js";
-import { handleSearch } from "./js/utils/search.js";
+import { setupSearchEvent } from "./js/utils/search.js";
 
 // Global UI
 import { setLogoutListener } from "./js/ui/global/logout.js";
@@ -103,16 +103,16 @@ function setupSearchListeners() {
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      handleSearch(e);
+      setupSearchEvent(e);
     }
   };
 
   if (desktopInput) {
-    desktopInput.addEventListener("keydown", handleEnter);
+    desktopInput.addEventListener("keydown", setupSearchEvent);
   }
 
   if (mobileInput) {
-    mobileInput.addEventListener("keydown", handleEnter);
+    mobileInput.addEventListener("keydown", setupSearchEvent);
   }
 }
 setupSearchListeners();
