@@ -1,9 +1,9 @@
 import { readProfile } from "../../api/profile/read.js";
+import { getUserName } from "../../utils/auth.js";
 
 // Display user data on profile page
 export async function displayUserProfile() {
-  const profile = JSON.parse(localStorage.getItem("profile"));
-  const username = profile?.name;
+  const username = getUserName();
   if (!username) return;
 
   try {

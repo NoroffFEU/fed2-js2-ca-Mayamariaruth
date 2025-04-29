@@ -1,4 +1,5 @@
 import { readPosts } from "../../api/post/feed.js";
+import { getUserName } from "../../utils/auth.js";
 import { onOpenDeleteModal } from "./delete.js";
 import { onOpenEditModal } from "./edit.js";
 
@@ -12,7 +13,7 @@ export async function loadPosts(searchPosts = null) {
 
     const posts = searchPosts || (await readPosts());
 
-    const currentUser = JSON.parse(localStorage.getItem("profile"))?.name;
+    const currentUser = getUserName();
 
     for (const post of posts) {
       const feedBox = document.createElement("div");

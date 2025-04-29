@@ -1,4 +1,4 @@
-import { isLoggedIn } from "../../utils/auth.js";
+import { isLoggedIn, getUserName } from "../../utils/auth.js";
 import { createPost } from "../../api/post/create.js";
 import { readProfile } from "../../api/profile/read.js";
 import { loadPosts } from "./feed.js";
@@ -11,8 +11,7 @@ export async function renderCreatePostForm() {
   const container = document.getElementById("create-post-container");
   if (!container) return;
 
-  const profile = JSON.parse(localStorage.getItem("profile"));
-  const username = profile?.name;
+  const username = getUserName();
   if (!username) return;
   const user = await readProfile(username);
 
