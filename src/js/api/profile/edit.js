@@ -4,22 +4,25 @@ import { headers } from "../headers.js";
 // Sends an authenticated request to edit the profile
 export async function editProfile(username, { avatar, bio }) {
   const url = `${API_SOCIAL_PROFILES}/${username}`;
+  const avatarAlt = "User's avatar";
 
   const response = await fetch(url, {
     method: "PUT",
     headers: headers(),
     body: JSON.stringify({
-      avatar,
+      avatar: {
+        url: avatar,
+        alt: avatarAlt,
+      },
       bio,
     }),
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(
-      errorData.errors?.[0]?.message || "Failed to update profile"
-    );
+    throw new Error(result.errors?.[0]?.message || "Failed to update profile");
   }
 
-  return await response.json();
+  return result.data;
 }

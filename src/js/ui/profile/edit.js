@@ -1,11 +1,13 @@
 import { editProfile } from "../../api/profile/edit.js";
+import { displayUserProfile } from "./read.js";
 import { showNotification } from "../../utils/notifications.js";
 
+// Display the edit profile modal
 export async function onOpenEditProfileModal() {
   const avatarUrl = document.getElementById("profile-avatar").src;
   const bio = document.getElementById("profile-bio").textContent;
 
-  // Create the edit profile modal HTML
+  // Create the modal HTML
   const modalHtml = `
     <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="edit-profile-modal-label" aria-hidden="true">
       <div class="modal-dialog">
@@ -56,21 +58,29 @@ async function onEditProfile(event) {
   const bio = document.getElementById("bio").value;
 
   try {
-    await editProfile(username, { avatar, bio });
-    showNotification("Profile updated successfully!", "success");
+    const updatedProfile = await editProfile(username, { avatar, bio });
+
+    // Update localStorage
+    const storedProfile = JSON.parse(localStorage.getItem("profile")) || {};
+    const newProfile = {
+      ...storedProfile,
+      avatar: updatedProfile.avatar,
+      bio: updatedProfile.bio,
+    };
+    localStorage.setItem("profile", JSON.stringify(newProfile));
+
+    // Refresh the profile view
+    await displayUserProfile();
 
     // Close the modal
     const modalInstance = bootstrap.Modal.getInstance(
-      document.getElementById("update-profile-modal")
+      document.getElementById("edit-profile-modal")
     );
     modalInstance.hide();
+    document.getElementById("edit-profile-modal").remove();
 
-    document.getElementById("update-profile-modal").remove();
-
-    // Update profile view with the new data
-    document.getElementById("profile-avatar").src = avatar;
-    document.getElementById("profile-bio").textContent = bio;
+    showNotification("Profile updated successfully!", "success");
   } catch (error) {
-    showNotification("Failed to update profile.", "error");
+    showNotification(error.message || "Failed to update profile.", "error");
   }
 }
