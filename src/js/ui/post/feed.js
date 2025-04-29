@@ -65,7 +65,7 @@ export async function loadPosts(searchPosts = null) {
                 : ""
             }
           </div>
-          <span>Posted on <strong>${new Date(
+          <span class="posted-on">Posted on <strong>${new Date(
             post.created
           ).toLocaleDateString()}</strong></span>
         </a>

@@ -10,11 +10,13 @@ export async function followUser(username) {
     headers: headers(),
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
     throw new Error(result.errors?.[0]?.message || "Failed to follow user");
   }
 
-  return await response.json();
+  return result;
 }
 
 // Unfollow a specific user
@@ -26,9 +28,11 @@ export async function unfollowUser(username) {
     headers: headers(),
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
     throw new Error(result.errors?.[0]?.message || "Failed to unfollow user");
   }
 
-  return await response.json();
+  return result;
 }
