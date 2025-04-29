@@ -2,6 +2,7 @@ import { readPosts } from "../../api/post/feed.js";
 import { getUserName } from "../../utils/auth.js";
 import { onOpenDeleteModal } from "./delete.js";
 import { onOpenEditModal } from "./edit.js";
+import { createFollowButton } from "../../utils/followBtn.js"; // Import the new follow button helper
 
 // Display all posts in home feed
 export async function loadPosts(searchPosts = null) {
@@ -12,7 +13,6 @@ export async function loadPosts(searchPosts = null) {
     container.innerHTML = "";
 
     const posts = searchPosts || (await readPosts());
-
     const currentUser = getUserName();
 
     for (const post of posts) {
@@ -28,10 +28,19 @@ export async function loadPosts(searchPosts = null) {
             }" alt="${
         post.author?.avatar?.alt || "User avatar"
       }" class="rounded-circle me-2 user-avatar">
-            <strong class="h5 mb-0">${
-              post.author?.name || post.author?.username || "Unknown Author"
-            }</strong>
+            <div class="">
+              <strong class="h5 mb-0">${
+                post.author?.name || post.author?.username || "Unknown Author"
+              }</strong>
+            <!-- Conditionally show Follow/Unfollow button -->
+            ${
+              post.author?.name !== currentUser
+                ? '<div class="follow-btn-container"></div>'
+                : ""
+            }
+            </div>
           </div>
+
           ${
             post.author?.name === currentUser
               ? `<div>
@@ -61,6 +70,13 @@ export async function loadPosts(searchPosts = null) {
           ).toLocaleDateString()}</strong></span>
         </a>
       `;
+
+      // Add the Follow/Unfollow button if it's not the current user
+      const followButton = createFollowButton(post.author?.name);
+      const followBtnContainer = feedBox.querySelector(".follow-btn-container");
+      if (followButton && followBtnContainer) {
+        followBtnContainer.appendChild(followButton);
+      }
 
       container.appendChild(feedBox);
     }
