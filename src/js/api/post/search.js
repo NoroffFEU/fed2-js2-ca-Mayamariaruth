@@ -3,7 +3,9 @@ import { headers } from "../headers.js";
 
 // Fetch posts related to search query
 export async function searchPosts(query) {
-  const url = `${API_SOCIAL_POSTS}/search?q=${encodeURIComponent(query)}`;
+  const url = new URL(`${API_SOCIAL_POSTS}/search`);
+  url.searchParams.append("q", query);
+  url.searchParams.append("_author", "true");
 
   const response = await fetch(url, {
     headers: headers(),

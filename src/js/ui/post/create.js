@@ -19,7 +19,7 @@ export async function renderCreatePostForm() {
   container.innerHTML = `
     <div id="feed-boxes" class="rounded-3 mt-4 mb-3">
       <div class="d-flex align-items-center mb-3">
-        <img src="${user.avatar?.url || "/images/default-avatar.png"}" alt="${
+        <img src="${user.avatar?.url || "/public/images/avatar.png"}" alt="${
     user.avatar?.alt || "User avatar"
   }" class="rounded-circle me-2 user-avatar">
         <strong class="h5 mb-0">${user.name}</strong>

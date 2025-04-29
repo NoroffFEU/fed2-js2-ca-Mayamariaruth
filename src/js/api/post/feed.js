@@ -21,4 +21,4 @@ export async function readPosts() {
 }
 
 // Fetch all created posts by one author from API
-export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
+export async function readPostsByUser(username) {}

@@ -3,13 +3,15 @@ import { onOpenDeleteModal } from "./delete.js";
 import { onOpenEditModal } from "./edit.js";
 
 // Display all posts in home feed
-export async function loadPosts() {
+export async function loadPosts(searchPosts = null) {
   try {
-    const posts = await readPosts();
     const container = document.getElementById("feed-post-container");
     if (!container) return;
 
     container.innerHTML = "";
+
+    const posts = searchPosts || (await readPosts());
+
     const currentUser = JSON.parse(localStorage.getItem("profile"))?.name;
 
     for (const post of posts) {
@@ -21,16 +23,16 @@ export async function loadPosts() {
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="d-flex align-items-center">
             <img src="${
-              post.author.avatar?.url ?? "/images/default-avatar.png"
+              post.author?.avatar?.url ?? "/public/images/avatar.png"
             }" alt="${
-        post.author.avatar?.alt || "User avatar"
+        post.author?.avatar?.alt || "User avatar"
       }" class="rounded-circle me-2 user-avatar">
             <strong class="h5 mb-0">${
-              post.author.name || post.author.username || "Unknown Author"
+              post.author?.name || post.author?.username || "Unknown Author"
             }</strong>
           </div>
           ${
-            post.author.name === currentUser
+            post.author?.name === currentUser
               ? `<div>
                    <button class="btn btn-sm me-2 edit-post-btn rounded-2" data-id="${post.id}"><i class="fa-solid fa-pen"></i></button>
                    <button class="btn btn-sm btn-outline-danger delete-post-btn rounded-2" data-id="${post.id}" data-title="${post.title}"><i class="fa-solid fa-trash-can"></i></button>
