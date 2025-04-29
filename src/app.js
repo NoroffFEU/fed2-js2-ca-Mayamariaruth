@@ -6,7 +6,7 @@ import router from "./js/router";
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
 import { isLoggedIn } from "./js/utils/auth.js";
 import { showNotification } from "./js/utils/notifications.js";
-import { setupSearch } from "./js/utils/search.js";
+import { handleSearch } from "./js/utils/search.js";
 
 // Global UI
 import { setLogoutListener } from "./js/ui/global/logout.js";
@@ -27,7 +27,6 @@ updateNavbarLinks();
 setActiveLink();
 await loadAboutModal();
 aboutModalTrigger();
-setupSearch();
 
 // Update active styling class on navbar links
 function setActiveLink() {
@@ -96,3 +95,24 @@ if (stored) {
   showNotification(message, type);
   sessionStorage.removeItem("notification");
 }
+
+// Search input event listener
+function setupSearchListeners() {
+  const desktopInput = document.getElementById("search-input");
+  const mobileInput = document.getElementById("search-input-mobile");
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearch(e);
+    }
+  };
+
+  if (desktopInput) {
+    desktopInput.addEventListener("keydown", handleEnter);
+  }
+
+  if (mobileInput) {
+    mobileInput.addEventListener("keydown", handleEnter);
+  }
+}
+setupSearchListeners();
