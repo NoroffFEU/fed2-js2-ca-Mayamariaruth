@@ -8,13 +8,10 @@ export async function displayPost(postId) {
 
     const container = document.getElementById("post-page");
     container.innerHTML = `
-      <div class="card mx-auto my-5 shadow-lg">
+      <div class="card mx-auto my-5 text-white pt-2 post-card">
         <div class="card-body">
-          <h1 class="card-title h2 mb-3">${post.title}</h1>
-          <div class="mb-3 text-muted small">
-            <span>By ${post.author?.name || "Unknown Author"}</span> | 
-            <span>${new Date(post.created).toLocaleDateString()}</span>
-          </div>
+          <h1 class="card-title mb-3">${post.title}</h1>
+          <p class="card-text mb-3 h5">${post.body || ""}</p>
             ${
               post.media?.url
                 ? `
@@ -23,7 +20,12 @@ export async function displayPost(postId) {
                   }" class="img-fluid mb-4"> `
                 : ""
             }
-          <p class="card-text">${post.body || ""}</p>
+          <div class="mb-3">
+            <span>By <strong>${
+              post.author?.name || "Unknown Author"
+            }</strong></span> | 
+            <span>${new Date(post.created).toLocaleDateString()}</span>
+          </div>
         </div>
       </div>
     `;
