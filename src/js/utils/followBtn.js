@@ -1,4 +1,4 @@
-import { followUser, unfollowUser } from "../api/profile/follow.js";
+import { followUser, unfollowUser } from "../api/post/follow.js";
 import { getUserName } from "./auth.js";
 
 // Create follow/unfollow button with event listener
