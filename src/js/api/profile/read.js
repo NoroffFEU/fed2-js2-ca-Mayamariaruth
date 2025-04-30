@@ -15,5 +15,3 @@ export async function readProfile(username) {
   const { data } = await res.json();
   return data;
 }
-
-export async function readProfiles(limit, page) {}
