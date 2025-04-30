@@ -18,7 +18,7 @@ export async function displayUserProfile() {
     if (profileEmail) profileEmail.textContent = user.email;
     if (profileBio) profileBio.textContent = user.bio || "No bio provided";
     if (profileAvatar) {
-      profileAvatar.src = user.avatar?.url || "/images/default-avatar.png";
+      profileAvatar.src = user.avatar?.url || "/public/images/avatar.png";
       profileAvatar.alt = user.avatar?.alt || "User avatar";
     }
   } catch (error) {

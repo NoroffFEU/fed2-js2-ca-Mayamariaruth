@@ -57,6 +57,16 @@ async function onEditProfile(event) {
   const avatar = document.getElementById("avatar-url").value;
   const bio = document.getElementById("bio").value;
 
+  // Validate avatar URL
+  if (avatar) {
+    try {
+      new URL(avatar);
+    } catch {
+      showNotification("Avatar must be a valid URL.", "error");
+      return;
+    }
+  }
+
   try {
     const updatedProfile = await editProfile(username, { avatar, bio });
 

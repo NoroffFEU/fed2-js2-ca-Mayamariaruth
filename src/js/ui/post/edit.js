@@ -69,6 +69,29 @@ export async function onEditPost(event) {
   const mediaUrl = document.getElementById("edit-media-url").value.trim();
   const mediaAlt = document.getElementById("edit-media-alt").value.trim();
 
+  const errors = [];
+
+  // Validate title and body content exists
+  if (!title || !body) {
+    errors.push("Title and body are required.");
+  }
+
+  // Validate media URL and alt text
+  if (mediaUrl && mediaAlt) {
+    try {
+      new URL(mediaUrl);
+    } catch {
+      errors.push("Image URL must be a valid URL.");
+    }
+  } else if (mediaUrl || mediaAlt) {
+    errors.push("Both image URL and alt text are required if one is provided.");
+  }
+
+  if (errors.length) {
+    showNotification(errors.join(" "), "error");
+    return;
+  }
+
   const updatedPost = {
     title,
     body,

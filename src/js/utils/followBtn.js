@@ -16,10 +16,12 @@ export function createFollowButton(profileName) {
         await followUser(profileName);
         btn.textContent = "Unfollow";
         updateFollowingList(profileName, "add");
+        updateAllFollowButtons(profileName, true);
       } else {
         await unfollowUser(profileName);
         btn.textContent = "Follow";
         updateFollowingList(profileName, "remove");
+        updateAllFollowButtons(profileName, false);
       }
     } catch (err) {
       console.error("Failed to follow/unfollow", err);
@@ -46,4 +48,15 @@ function updateFollowingList(username, action) {
   }
 
   localStorage.setItem("followingList", JSON.stringify(followingList));
+}
+
+// Update all follow buttons for a given username
+export function updateAllFollowButtons(username, isFollowing) {
+  const buttons = document.querySelectorAll(
+    `.follow-btn[data-username="${username}"]`
+  );
+
+  buttons.forEach((btn) => {
+    btn.textContent = isFollowing ? "Unfollow" : "Follow";
+  });
 }
