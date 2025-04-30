@@ -1,10 +1,16 @@
-import { readPostsByAuthor } from "../../api/profile/read.js";
+import { readPostsByAuthor } from "../../api/profile/authorPosts.js";
 
 // Render all author posts
 export async function renderAuthorPostsPage() {
   const container = document.getElementById("author-feed-container");
   const params = new URLSearchParams(window.location.search);
   const username = params.get("username");
+
+  const heading = document.createElement("h1");
+  heading.className = "mt-4 mb-4 mx-4";
+  heading.textContent = `${username}'s posts`;
+  container.before(heading);
+
   if (!username || !container) {
     container.innerHTML = "<p>User posts not found.</p>";
     return;
@@ -20,7 +26,7 @@ export async function renderAuthorPostsPage() {
 
       postCard.innerHTML = `
           <div class="card-body">
-            <h1 class="card-title mb-3">${post.title}</h1>
+            <h2 class="card-title mb-3">${post.title}</h2>
             <p class="card-text mb-3 h5">${post.body || ""}</p>
             ${
               post.media?.url

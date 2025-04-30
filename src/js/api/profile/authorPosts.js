@@ -9,12 +9,13 @@ export async function readPostsByAuthor(username) {
     headers: headers(),
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
-    const error = await response.json();
     throw new Error(
       error.errors?.[0]?.message || "Failed to fetch user's posts"
     );
   }
 
-  return await response.json();
+  return result.data;
 }

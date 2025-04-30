@@ -28,10 +28,14 @@ export async function loadPosts(searchPosts = null) {
             }" alt="${
         post.author?.avatar?.alt || "User avatar"
       }" class="rounded-circle me-2 user-avatar">
-            <div class="">
-              <strong class="h5 mb-0">${
-                post.author?.name || post.author?.username || "Unknown Author"
-              }</strong>
+            <div>
+              <strong class="h5 mb-0">
+                <a href="/profile/authorPosts/?username=${
+                  post.author?.name
+                }" class="text-decoration-none text-white">
+                  ${post.author?.name || "Unknown Author"}
+                </a>
+              </strong>
             <!-- Conditionally show Follow/Unfollow button -->
             ${
               post.author?.name !== currentUser
