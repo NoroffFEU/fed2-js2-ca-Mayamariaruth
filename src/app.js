@@ -103,16 +103,19 @@ function setupSearchListeners() {
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      setupSearchEvent(e);
+      e.preventDefault();
+      const query = e.target.value.trim();
+      setupSearchEvent(query);
     }
   };
 
   if (desktopInput) {
-    desktopInput.addEventListener("keydown", setupSearchEvent);
+    desktopInput.addEventListener("keydown", handleEnter);
   }
 
   if (mobileInput) {
-    mobileInput.addEventListener("keydown", setupSearchEvent);
+    mobileInput.addEventListener("keydown", handleEnter);
   }
 }
+
 setupSearchListeners();

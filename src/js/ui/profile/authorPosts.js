@@ -6,11 +6,6 @@ export async function renderAuthorPostsPage() {
   const params = new URLSearchParams(window.location.search);
   const username = params.get("username");
 
-  const heading = document.createElement("h1");
-  heading.className = "mt-4 mb-4 mx-4";
-  heading.textContent = `${username}'s posts`;
-  container.before(heading);
-
   if (!username || !container) {
     container.innerHTML = "<p>User posts not found.</p>";
     return;
@@ -19,6 +14,19 @@ export async function renderAuthorPostsPage() {
   try {
     const posts = await readPostsByAuthor(username);
     container.innerHTML = "";
+
+    // Add heading and post count
+    const heading = document.createElement("h1");
+    heading.className = "mt-4 mb-2 mx-4";
+    heading.textContent = `${username}'s posts`;
+    const postCount = document.createElement("p");
+    postCount.className = "mx-4 mb-4";
+    postCount.textContent = `${posts.length} post${
+      posts.length !== 1 ? "s" : ""
+    }`;
+
+    container.appendChild(heading);
+    container.appendChild(postCount);
 
     posts.forEach((post) => {
       const postCard = document.createElement("div");
