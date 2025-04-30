@@ -1,6 +1,7 @@
 import { readPosts, searchPosts } from "../api/post/feed.js";
 import { loadPosts } from "../ui/post/feed.js";
 import { showNotification } from "../utils/notifications.js";
+import { setHomeActive } from "../utils/nav.js";
 
 // Handle search query saved in localstorage
 export async function handleFeedSearch() {
@@ -11,12 +12,14 @@ export async function handleFeedSearch() {
       const response = await searchPosts(query);
       loadPosts(response.data);
       localStorage.removeItem("searchQuery");
+      setHomeActive();
     } catch (error) {
       console.error("Failed to load search results:", error);
       showNotification("Failed to search posts.", "error");
     }
   } else {
     loadPosts();
+    setHomeActive();
   }
 }
 
@@ -49,6 +52,7 @@ export async function searchFeed() {
     }
 
     loadPosts(posts);
+    setHomeActive();
 
     const clearBtn = document.getElementById("clear-search-btn");
     if (clearBtn) {
@@ -60,6 +64,7 @@ export async function searchFeed() {
 
         const allPosts = await readPosts();
         loadPosts(allPosts);
+        setHomeActive();
 
         if (createPostForm) {
           createPostForm.classList.remove("d-none");

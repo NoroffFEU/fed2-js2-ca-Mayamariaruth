@@ -1,5 +1,5 @@
 import { onLogout } from "../auth/logout.js";
-import { updateNavbarLinks } from "../../../app.js";
+import { updateNavbarLinks } from "../../utils/nav.js";
 import { isLoggedIn } from "../../utils/auth.js";
 
 // Logout logic clearing the session, updating navbar and displaying notification
