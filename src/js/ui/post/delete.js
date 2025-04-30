@@ -1,7 +1,7 @@
 import { deletePost } from "../../api/post/delete.js";
+import { searchPosts } from "../../api/post/feed.js";
 import { loadPosts } from "./feed.js";
 import { showNotification } from "../../utils/notifications.js";
-import { setHomeActive } from "../../utils/nav.js";
 
 // Displays the delete confirmation modal
 export function onOpenDeleteModal(event) {
@@ -61,10 +61,13 @@ async function onDeletePost(event) {
     if (modalInstance) modalInstance.hide();
     modalElement.remove();
 
-    await loadPosts();
-    setHomeActive();
-    document.getElementById("search-feedback")?.remove();
-    document.getElementById("clear-search-btn")?.remove();
+    const query = localStorage.getItem("searchQuery");
+    if (query) {
+      const response = await searchPosts(query);
+      loadPosts(response.data);
+    } else {
+      await loadPosts();
+    }
   } catch (error) {
     const message =
       error.message || "Something went wrong while deleting the post.";

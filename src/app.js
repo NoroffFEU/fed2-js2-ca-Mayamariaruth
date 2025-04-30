@@ -4,7 +4,6 @@ import "./css/style.css";
 // Utilities
 import router from "./js/router";
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
-import { isLoggedIn } from "./js/utils/auth.js";
 import { setActiveLink, updateNavbarLinks } from "./js/utils/nav.js";
 import { showNotification } from "./js/utils/notifications.js";
 import { setupSearchEvent } from "./js/utils/search.js";
@@ -21,6 +20,13 @@ protectRoutes();
 
 // Route and load the current page
 await router(window.location.pathname);
+
+// Clear search query when clicking away
+document.querySelectorAll('a[href="/"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    localStorage.removeItem("searchQuery");
+  });
+});
 
 // Global event listeners and UI updates
 setLogoutListener();

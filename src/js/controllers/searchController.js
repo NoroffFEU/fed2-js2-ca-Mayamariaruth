@@ -11,7 +11,6 @@ export async function handleFeedSearch() {
     try {
       const response = await searchPosts(query);
       loadPosts(response.data);
-      localStorage.removeItem("searchQuery");
       setHomeActive();
     } catch (error) {
       console.error("Failed to load search results:", error);
@@ -35,7 +34,6 @@ export async function searchFeed() {
     if (query) {
       const response = await searchPosts(query);
       posts = response.data;
-      localStorage.removeItem("searchQuery");
 
       if (feedback) {
         feedback.textContent =
