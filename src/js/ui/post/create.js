@@ -4,7 +4,20 @@ import { readProfile } from "../../api/profile/read.js";
 import { loadPosts } from "./feed.js";
 import { showNotification } from "../../utils/notifications.js";
 
-// Render the create post form on home page for logged in users
+/**
+ * Renders the "Create Post" form on the homepage if the user is logged in.
+ * Includes user avatar, input trigger, and modal with form fields.
+ * Attaches the form submission handler for post creation.
+ *
+ * @async
+ * @function renderCreatePostForm
+ *
+ * @returns {Promise<void>} A Promise that resolves after the form is rendered and event listener is attached.
+ *
+ * @example
+ * // Render the create post form on the homepage
+ * await renderCreatePostForm();
+ */
 export async function renderCreatePostForm() {
   if (!isLoggedIn()) return;
 
@@ -56,7 +69,19 @@ export async function renderCreatePostForm() {
   }
 }
 
-// Create post form submission logic
+/**
+ * Handles the submission of the "Create Post" form.
+ * Validates the user input, displays notifications on errors, and sends the post data to the API.
+ * On success, resets the form, closes the modal, and reloads the post feed.
+ *
+ * @async
+ * @function onCreatePost
+ * @param {SubmitEvent} event - The submit event triggered by the form submission.
+ * @returns {Promise<void>} Resolves after post is created, modal is closed, and the feed is updated.
+ *
+ * @example
+ * document.getElementById('create-post-form').addEventListener('submit', onCreatePost);
+ */
 export async function onCreatePost(event) {
   event.preventDefault();
 

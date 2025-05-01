@@ -12,8 +12,17 @@ import { createFollowButton } from "../../utils/followBtn.js"; // Import the new
  *
  * @async
  * @function loadPosts
- * @param {Array<Object>|null} [searchPosts=null] - The array of posts to be displayed. If null, the function fetches all posts using the `readPosts` API function.
- * @returns {Promise<void>} A Promise that resolves when the posts are loaded and displayed. If an error occurs, it is logged to the console.
+ * @param {Array<Object>|null} [searchPosts=null] - Optional array of post objects to render instead of fetching.
+ * @returns {Promise<void>} Resolves when posts are loaded and rendered into the DOM.
+ *
+ * @example
+ * // Load all posts
+ * await loadPosts();
+ *
+ * @example
+ * // Load searched posts
+ * const response = await searchPosts(query);
+ * loadPosts(response.data);
  *
  * @throws {Error} If there is an issue loading the posts (e.g., network issues or incorrect data format), an error is logged to the console.
  */

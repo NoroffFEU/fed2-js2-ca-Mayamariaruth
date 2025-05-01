@@ -1,7 +1,18 @@
 import { editPost } from "../../api/post/edit.js";
 import { showNotification } from "../../utils/notifications.js";
 
-// Displays the edit post modal with pre-populated form fields
+/**
+ * Opens a modal pre-filled with post data for editing.
+ * Extracts post content and metadata from the DOM and injects a modal with a form.
+ * Attaches a submit listener to handle the post update logic.
+ *
+ * @function onOpenEditModal
+ * @param {MouseEvent} event - The click event from the "Edit" button; used to locate the post data in the DOM.
+ * @returns {void} Does not return anything directly. Creates and shows a Bootstrap modal dynamically.
+ *
+ * @example
+ * document.querySelector('.edit-post-btn').addEventListener('click', onOpenEditModal);
+ */
 export function onOpenEditModal(event) {
   const postId = event.currentTarget.dataset.id;
   const postBox = event.target.closest(".post-box");
@@ -57,7 +68,22 @@ export function onOpenEditModal(event) {
   }
 }
 
-// Handles the editing of a post when confirmed
+/**
+ * Handles the submission of the Edit Post form.
+ * Validates input fields, sends the updated post to the API, updates the post DOM, and closes the modal.
+ *
+ * @async
+ * @function onEditPost
+ * @param {Event} event - The form submission event. Prevents default behavior and triggers the post update.
+ *
+ * @returns {Promise<void>} A Promise that resolves after the post is edited, DOM is updated, and modal is closed.
+ *
+ * @throws {Error} If the update request fails or invalid input is provided, a notification is shown with the error.
+ *
+ * @example
+ * // Attach event listener to the form submit button
+ * document.getElementById("edit-post-form").addEventListener("submit", onEditPost);
+ */
 export async function onEditPost(event) {
   event.preventDefault();
 
