@@ -8,8 +8,8 @@ export function protectRoutes() {
     "/",
     "/index.html",
     "/post/index.html",
-    "/post/edit/index.html",
     "/profile/",
+    "/profile/authorposts/",
   ];
 
   const needsAuth = protectedPaths.includes(currentPath);

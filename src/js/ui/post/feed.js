@@ -4,7 +4,19 @@ import { onOpenDeleteModal } from "./delete.js";
 import { onOpenEditModal } from "./edit.js";
 import { createFollowButton } from "../../utils/followBtn.js"; // Import the new follow button helper
 
-// Display all posts in home feed
+/**
+ * Loads and displays posts in the home feed. If search results are provided, it displays them; otherwise, it fetches all posts.
+ * Each post is rendered with the author's details, title, body, and any associated media. Additionally, the function
+ * conditionally displays a follow/unfollow button based on whether the post author is the current user, and provides
+ * options to edit or delete the post if the current user is the author.
+ *
+ * @async
+ * @function loadPosts
+ * @param {Array<Object>|null} [searchPosts=null] - The array of posts to be displayed. If null, the function fetches all posts using the `readPosts` API function.
+ * @returns {Promise<void>} A Promise that resolves when the posts are loaded and displayed. If an error occurs, it is logged to the console.
+ *
+ * @throws {Error} If there is an issue loading the posts (e.g., network issues or incorrect data format), an error is logged to the console.
+ */
 export async function loadPosts(searchPosts = null) {
   try {
     const container = document.getElementById("feed-post-container");
