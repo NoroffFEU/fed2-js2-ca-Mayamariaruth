@@ -2,7 +2,7 @@
 import "./css/style.css";
 
 // Utilities
-import router from "./js/router";
+import router from "./js/router/index.js";
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
 import { setActiveLink, updateNavbarLinks } from "./js/utils/nav.js";
 import { showNotification } from "./js/utils/notifications.js";
