@@ -1,5 +1,6 @@
 // Global styles
 import "./css/style.css";
+import "../dist/assets/app-CRIsK6_n.css";
 
 // Utilities
 import router from "./js/router/index.js";
