@@ -1,0 +1,1 @@
+import{a as s,h as t}from"./headers-C2fTOECc.js";async function i(r){const a=await fetch(`${s}/${r}`,{headers:t()});if(!a.ok){const e=await a.json();throw new Error(e.message||"Failed to load profile")}const{data:o}=await a.json();return o}export{i as r};
