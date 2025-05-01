@@ -12,9 +12,11 @@ export default defineConfig({
         login: path.resolve(__dirname, "./auth/login/index.html"),
         register: path.resolve(__dirname, "./auth/register/index.html"),
         profile: path.resolve(__dirname, "./profile/index.html"),
+        authorPosts: path.resolve(
+          __dirname,
+          "./profile/authorPosts/index.html"
+        ),
         post: path.resolve(__dirname, "./post/index.html"),
-        editPost: path.resolve(__dirname, "./post/edit/index.html"),
-        createPost: path.resolve(__dirname, "./post/create/index.html"),
       },
     },
   },
