@@ -3,7 +3,6 @@
 @import url(auth.css);
 @import url(edit.css);
 @import url(feed.css);
-@import url(post.css);
 @import url(profile.css);
 
 /* General styling */
@@ -137,6 +136,32 @@ header {
 #create-post-form textarea:focus {
   border: solid 3px var(--primary);
   box-shadow: none;
+}
+
+/* Loading spinner */
+#loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#loading-spinner .spinner-border {
+  width: 6rem;
+  height: 6rem;
+}
+
+/* Post page */
+.post-card {
+  background-color: var(--primary);
+  width: 95%;
+  max-width: 1400px;
 }
 
 /* Media Queries */

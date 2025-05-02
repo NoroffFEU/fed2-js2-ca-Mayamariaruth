@@ -89,3 +89,12 @@ function setupSearchListeners() {
 }
 
 setupSearchListeners();
+
+// Clear search query when clicking the back-to-feed link
+document
+  .querySelectorAll('a[href="/fed2-js2-ca-Mayamariaruth/index.html"]')
+  .forEach((link) => {
+    link.addEventListener("click", () => {
+      localStorage.removeItem("searchQuery");
+    });
+  });

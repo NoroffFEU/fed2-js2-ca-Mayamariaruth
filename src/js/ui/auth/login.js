@@ -1,5 +1,9 @@
 import { loginUser } from "../../api/auth/login.js";
 import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
 
 // Login form submission logic with validation
 export async function onLogin(event) {
@@ -18,6 +22,7 @@ export async function onLogin(event) {
   }
 
   try {
+    showLoadingSpinner();
     const user = await loginUser({ email, password });
     sessionStorage.setItem(
       "notification",
@@ -29,5 +34,7 @@ export async function onLogin(event) {
     window.location.href = "/fed2-js2-ca-Mayamariaruth/";
   } catch (error) {
     showNotification(error.message, "error");
+  } finally {
+    hideLoadingSpinner();
   }
 }
