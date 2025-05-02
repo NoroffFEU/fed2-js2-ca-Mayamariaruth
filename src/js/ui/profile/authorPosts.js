@@ -3,10 +3,12 @@ import { readPostsByAuthor } from "../../api/profile/authorPosts.js";
 // Render all author posts
 export async function renderAuthorPostsPage() {
   const container = document.getElementById("author-feed-container");
+  if (!container) return;
+
   const params = new URLSearchParams(window.location.search);
   const username = params.get("username");
 
-  if (!username || !container) {
+  if (!username) {
     container.innerHTML = "<p>User posts not found.</p>";
     return;
   }

@@ -1,11 +1,14 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
+import { isLoggedIn } from "../../utils/auth.js";
 
 // Fetch all created posts from API
 export async function readPosts() {
   const url = new URL(API_SOCIAL_POSTS);
 
-  url.searchParams.append("_author", "true");
+  if (isLoggedIn()) {
+    url.searchParams.append("_author", "true");
+  }
 
   const response = await fetch(url, {
     headers: headers(),

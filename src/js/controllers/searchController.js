@@ -2,6 +2,7 @@ import { readPosts, searchPosts } from "../api/post/feed.js";
 import { loadPosts } from "../ui/post/feed.js";
 import { showNotification } from "../utils/notifications.js";
 import { setHomeActive } from "../utils/nav.js";
+import { isLoggedIn } from "../utils/auth.js";
 
 // Handle search query saved in localstorage
 export async function handleFeedSearch() {
@@ -29,6 +30,14 @@ export async function searchFeed() {
   const createPostForm = document.getElementById("create-post-container");
 
   try {
+    // If user is not logged in and no search, skip loading posts
+    if (!isLoggedIn() && !query) {
+      if (feedback) {
+        feedback.textContent = "Please log in to view posts.";
+      }
+      return;
+    }
+
     let posts;
 
     if (query) {
