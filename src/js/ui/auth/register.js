@@ -1,5 +1,9 @@
 import { registerUser } from "../../api/auth/register";
 import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
 
 // Register form submission logic with validation
 export async function onRegister(event) {
@@ -70,6 +74,7 @@ export async function onRegister(event) {
   }
 
   try {
+    showLoadingSpinner();
     const result = await registerUser(username, email, password);
     if (result) {
       sessionStorage.setItem(
@@ -83,5 +88,7 @@ export async function onRegister(event) {
     }
   } catch (error) {
     showNotification(error.message, "error");
+  } finally {
+    hideLoadingSpinner();
   }
 }

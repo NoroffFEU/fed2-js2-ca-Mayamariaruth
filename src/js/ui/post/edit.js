@@ -1,5 +1,9 @@
 import { editPost } from "../../api/post/edit.js";
 import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
 
 /**
  * Opens a modal pre-filled with post data for editing.
@@ -124,6 +128,8 @@ export async function onEditPost(event) {
     media: mediaUrl ? { url: mediaUrl, alt: mediaAlt } : undefined,
   };
 
+  showLoadingSpinner();
+
   try {
     await editPost(postId, updatedPost);
     showNotification("Post updated successfully!", "success");
@@ -164,5 +170,7 @@ export async function onEditPost(event) {
     const message =
       error.message || "Something went wrong while updating the post.";
     showNotification(message, "error");
+  } finally {
+    hideLoadingSpinner();
   }
 }

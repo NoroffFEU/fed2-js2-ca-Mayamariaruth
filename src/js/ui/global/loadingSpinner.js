@@ -6,7 +6,7 @@ export function showLoadingSpinner() {
   spinnerContainer.id = "loading-spinner";
 
   const spinner = document.createElement("div");
-  spinner.classList.add("spinner-border", "text-warning-emphasis");
+  spinner.classList.add("spinner-border", "text-success-emphasis");
   spinner.setAttribute("role", "status");
 
   spinnerContainer.appendChild(spinner);

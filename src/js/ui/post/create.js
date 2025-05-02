@@ -3,6 +3,10 @@ import { createPost } from "../../api/post/create.js";
 import { readProfile } from "../../api/profile/read.js";
 import { loadPosts } from "./feed.js";
 import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
 
 /**
  * Renders the "Create Post" form on the homepage if the user is logged in.
@@ -132,6 +136,8 @@ export async function onCreatePost(event) {
     };
   }
 
+  showLoadingSpinner();
+
   try {
     await createPost(postData);
     showNotification("Post created successfully!", "success");
@@ -148,5 +154,7 @@ export async function onCreatePost(event) {
     await loadPosts();
   } catch (error) {
     showNotification(error.message, "error");
+  } finally {
+    hideLoadingSpinner();
   }
 }

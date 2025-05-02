@@ -1,6 +1,10 @@
 import { editProfile } from "../../api/profile/edit.js";
 import { displayUserProfile } from "./read.js";
 import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
 
 // Display the edit profile modal
 export async function onOpenEditProfileModal() {
@@ -75,6 +79,8 @@ async function onEditProfile(event) {
     }
   }
 
+  showLoadingSpinner();
+
   try {
     const updatedProfile = await editProfile(username, { avatar, bio });
 
@@ -100,5 +106,7 @@ async function onEditProfile(event) {
     showNotification("Profile updated successfully!", "success");
   } catch (error) {
     showNotification(error.message || "Failed to update profile.", "error");
+  } finally {
+    hideLoadingSpinner();
   }
 }

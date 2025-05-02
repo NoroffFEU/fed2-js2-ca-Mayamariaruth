@@ -3,7 +3,7 @@ import { updateNavbarLinks } from "../../utils/nav.js";
 import { isLoggedIn } from "../../utils/auth.js";
 
 // Logout logic clearing the session, updating navbar and displaying notification
-function handleLogout(event) {
+async function handleLogout(event) {
   event.preventDefault();
 
   onLogout();

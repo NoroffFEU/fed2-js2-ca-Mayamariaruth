@@ -2,6 +2,10 @@ import { deletePost } from "../../api/post/delete.js";
 import { searchPosts } from "../../api/post/feed.js";
 import { loadPosts } from "./feed.js";
 import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
 
 // Displays the delete confirmation modal
 export function onOpenDeleteModal(event) {
@@ -51,6 +55,8 @@ async function onDeletePost(event) {
   const button = event.currentTarget;
   const postId = button.dataset.id;
 
+  showLoadingSpinner();
+
   try {
     await deletePost(postId);
     showNotification("Post deleted successfully!", "success");
@@ -72,5 +78,7 @@ async function onDeletePost(event) {
     const message =
       error.message || "Something went wrong while deleting the post.";
     showNotification(message, "error");
+  } finally {
+    hideLoadingSpinner();
   }
 }
