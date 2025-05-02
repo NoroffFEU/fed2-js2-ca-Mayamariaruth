@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Create a chunk per view file
+          // Create a chunk per view file so Vite bundles the views files
           if (id.includes("src/js/router/views")) {
             const viewName = id.split("/").pop().split(".")[0];
             return viewName;

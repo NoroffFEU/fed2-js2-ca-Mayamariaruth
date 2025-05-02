@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: create.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: create.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { isLoggedIn, getUserName } from "../../utils/auth.js";
+import { createPost } from "../../api/post/create.js";
+import { readProfile } from "../../api/profile/read.js";
+import { loadPosts } from "./feed.js";
+import { showNotification } from "../../utils/notifications.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "../global/loadingSpinner.js";
+
+/**
+ * Renders the "Create Post" form on the homepage if the user is logged in.
+ * Includes user avatar, input trigger, and modal with form fields.
+ * Attaches the form submission handler for post creation.
+ *
+ * @async
+ * @function renderCreatePostForm
+ *
+ * @returns {Promise&lt;void>} A Promise that resolves after the form is rendered and event listener is attached.
+ *
+ * @example
+ * // Render the create post form on the homepage
+ * await renderCreatePostForm();
+ */
+export async function renderCreatePostForm() {
+  if (!isLoggedIn()) return;
+
+  const container = document.getElementById("create-post-container");
+  if (!container) return;
+
+  const username = getUserName();
+  if (!username) return;
+  const user = await readProfile(username);
+
+  container.innerHTML = `
+    &lt;div id="feed-boxes" class="rounded-3 mt-4 mb-3">
+      &lt;div class="d-flex align-items-center mb-3">
+        &lt;img src="${user.avatar?.url || "/public/images/avatar.png"}" alt="${
+    user.avatar?.alt || "User avatar"
+  }" class="rounded-circle me-2 user-avatar">
+        &lt;strong class="h5 mb-0">${user.name}&lt;/strong>
+      &lt;/div>
+      &lt;div>
+        &lt;input type="text" class="form-control rounded-3 create-form-field" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
+      &lt;/div>
+    &lt;/div>
+
+    &lt;!-- Modal -->
+    &lt;div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="create-post-modal-label">
+      &lt;div class="modal-dialog">
+        &lt;form id="create-post-form" class="modal-content">
+          &lt;div class="modal-header">
+            &lt;h2 class="modal-title" id="create-post-modal-label">Create Post&lt;/h2>
+            &lt;button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close">&lt;/button>
+          &lt;/div>
+          &lt;div class="modal-body">
+            &lt;input type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" placeholder="Title" />
+            &lt;textarea name="body" class="form-control mb-3 rounded-3 create-form-field" placeholder="Write your post..." rows="10">&lt;/textarea>
+            &lt;input type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
+            &lt;input type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
+          &lt;/div>
+          &lt;div class="modal-footer">
+            &lt;button type="submit" class="submit-btn">Post&lt;/button>
+          &lt;/div>
+        &lt;/form>
+      &lt;/div>
+    &lt;/div>
+  `;
+
+  const form = document.getElementById("create-post-form");
+  if (form) {
+    form.addEventListener("submit", onCreatePost);
+  }
+}
+
+/**
+ * Handles the submission of the "Create Post" form.
+ * Validates the user input, displays notifications on errors, and sends the post data to the API.
+ * On success, resets the form, closes the modal, and reloads the post feed.
+ *
+ * @async
+ * @function onCreatePost
+ * @param {SubmitEvent} event - The submit event triggered by the form submission.
+ * @returns {Promise&lt;void>} Resolves after post is created, modal is closed, and the feed is updated.
+ *
+ * @example
+ * document.getElementById('create-post-form').addEventListener('submit', onCreatePost);
+ */
+export async function onCreatePost(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const title = form.title.value.trim();
+  const body = form.body.value.trim();
+  const mediaUrl = form.mediaUrl.value.trim();
+  const mediaAlt = form.mediaAlt.value.trim();
+
+  const errors = [];
+
+  // Title validation
+  if (!title || title.length &lt; 3) {
+    errors.push("Title must be at least 3 characters long.");
+  }
+
+  // Body text validation
+  if (!body || body.length &lt; 3) {
+    errors.push("Post text must be at least 3 characters long.");
+  }
+
+  // Image URL and alt text validation
+  if (mediaUrl &amp;&amp; mediaAlt) {
+    try {
+      new URL(mediaUrl);
+    } catch {
+      errors.push("Image URL must be a valid URL.");
+    }
+  } else if (mediaUrl || mediaAlt) {
+    errors.push("Both image URL and alt text are required if one is provided.");
+  }
+
+  // Display all errors in the notification
+  if (errors.length > 0) {
+    showNotification(errors.join(" "), "error");
+    return;
+  }
+
+  const postData = {
+    title,
+    body,
+  };
+
+  if (mediaUrl &amp;&amp; mediaAlt) {
+    postData.media = {
+      url: mediaUrl,
+      alt: mediaAlt,
+    };
+  }
+
+  showLoadingSpinner();
+
+  try {
+    await createPost(postData);
+    showNotification("Post created successfully!", "success");
+    form.reset();
+
+    // Blur any focused element to avoid ARIA issue
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
+
+    bootstrap.Modal.getInstance(
+      document.getElementById("create-post-modal")
+    ).hide();
+    await loadPosts();
+  } catch (error) {
+    showNotification(error.message, "error");
+  } finally {
+    hideLoadingSpinner();
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#loadPosts">loadPosts</a></li><li><a href="global.html#onCreatePost">onCreatePost</a></li><li><a href="global.html#onEditPost">onEditPost</a></li><li><a href="global.html#onOpenEditModal">onOpenEditModal</a></li><li><a href="global.html#renderCreatePostForm">renderCreatePostForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri May 02 2025 18:26:39 GMT+0900 (Korean Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
