@@ -65,10 +65,9 @@ export function setHomeActive() {
   const homeDesktop = document.querySelector("#nav-home-desktop");
   const homeMobile = document.querySelector("#nav-home-mobile");
 
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.classList.remove("active");
-  });
-
-  if (homeDesktop) homeDesktop.classList.add("active");
-  if (homeMobile) homeMobile.classList.add("active");
+  const currentPath = window.location.pathname.replace(/\/+$/, "");
+  if (currentPath === "/fed2-js2-ca-Mayamariaruth/index.html") {
+    if (homeDesktop) homeDesktop.classList.add("active");
+    if (homeMobile) homeMobile.classList.add("active");
+  }
 }

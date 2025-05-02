@@ -42,6 +42,14 @@ export async function onOpenEditProfileModal() {
   );
   modalElement.show();
 
+  // Fix the aria-hidden issue when modal is shown
+  modalElement._element.addEventListener("shown.bs.modal", () => {
+    const backdrop = document.querySelector(".modal-backdrop");
+    if (backdrop) {
+      backdrop.removeAttribute("aria-hidden");
+    }
+  });
+
   // Form submission eventListener
   const form = document.getElementById("edit-profile-form");
   if (form) {

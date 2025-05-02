@@ -1,6 +1,27 @@
 // Global styles
 import "./css/style.css";
 
+// Clear search query if not on the feed page
+(function clearSearchQuery() {
+  const isFeedPage =
+    window.location.pathname.endsWith("/index.html") ||
+    window.location.pathname === "/fed2-js2-ca-Mayamariaruth" ||
+    window.location.pathname === "/fed2-js2-ca-Mayamariaruth/";
+
+  if (!isFeedPage) {
+    localStorage.removeItem("searchQuery");
+  }
+})();
+
+// Clear searchQuery if home or logo is clicked
+document
+  .querySelectorAll("#nav-home-desktop, #nav-home-mobile, .logo")
+  .forEach((el) => {
+    el?.addEventListener("click", () => {
+      localStorage.removeItem("searchQuery");
+    });
+  });
+
 // Router
 import router from "./js/router/index.js";
 

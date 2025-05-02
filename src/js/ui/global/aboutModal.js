@@ -23,5 +23,13 @@ export function aboutModalTrigger() {
         modal.show();
       });
     });
+
+    // Fix the aria-hidden issue on the modal backdrop when it's shown
+    modalElement.addEventListener("shown.bs.modal", () => {
+      const backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) {
+        backdrop.removeAttribute("aria-hidden");
+      }
+    });
   }
 }
