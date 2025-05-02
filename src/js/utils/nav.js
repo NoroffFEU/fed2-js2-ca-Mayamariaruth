@@ -20,9 +20,9 @@ export function setActiveLink() {
 
   if (profileIcon) {
     const highlightProfile =
-      currentPath === "/auth/login" ||
-      currentPath === "/auth/register" ||
-      currentPath.startsWith("/profile");
+      currentPath === "/fed2-js2-ca-Mayamariaruth/auth/login" ||
+      currentPath === "/fed2-js2-ca-Mayamariaruth/auth/register" ||
+      currentPath.startsWith("/fed2-js2-ca-Mayamariaruth/profile");
 
     if (highlightProfile) {
       profileIcon.classList.add("active");

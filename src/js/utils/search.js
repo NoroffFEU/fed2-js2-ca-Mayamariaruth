@@ -10,6 +10,6 @@ export async function setupSearchEvent(query) {
 
   if (query) {
     localStorage.setItem("searchQuery", query);
-    window.location.href = "/index.html";
+    window.location.href = "/fed2-js2-ca-Mayamariaruth/index.html";
   }
 }

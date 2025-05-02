@@ -17,7 +17,7 @@ function handleLogout(event) {
     })
   );
 
-  window.location.href = "/";
+  window.location.href = "/fed2-js2-ca-Mayamariaruth/";
 }
 
 // Attach logout listeners for desktop and mobile

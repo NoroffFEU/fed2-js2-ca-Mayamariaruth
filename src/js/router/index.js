@@ -7,7 +7,6 @@ export default async function router(pathname = window.location.pathname) {
   switch (normalizedPath) {
     case "":
     case "/":
-      console.log("📦 Loading feed view");
       await import("./views/feed.js");
       break;
     case "/auth/login":

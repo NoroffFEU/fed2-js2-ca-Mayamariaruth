@@ -2,7 +2,10 @@ import { isLoggedIn } from "./auth.js";
 
 // Redirect to login if path requires authentication and the user is not logged in
 export function protectRoutes() {
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname.replace(
+    "/fed2-js2-ca-Mayamariaruth",
+    ""
+  );
 
   const protectedPaths = [
     "/",
@@ -22,6 +25,6 @@ export function protectRoutes() {
         type: "error",
       })
     );
-    window.location.href = "/auth/login/";
+    window.location.href = "/fed2-js2-ca-Mayamariaruth/auth/login/";
   }
 }

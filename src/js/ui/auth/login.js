@@ -26,7 +26,7 @@ export async function onLogin(event) {
         message: `Welcome back, ${user.name}!`,
       })
     );
-    window.location.href = "/";
+    window.location.href = "/fed2-js2-ca-Mayamariaruth/";
   } catch (error) {
     showNotification(error.message, "error");
   }

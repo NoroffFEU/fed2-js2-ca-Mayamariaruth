@@ -79,7 +79,7 @@ export async function onRegister(event) {
           message: `Registered successfully!`,
         })
       );
-      window.location.href = "/auth/login/";
+      window.location.href = "/fed2-js2-ca-Mayamariaruth/auth/login/";
     }
   } catch (error) {
     showNotification(error.message, "error");
