@@ -136,6 +136,12 @@ export async function onCreatePost(event) {
     await createPost(postData);
     showNotification("Post created successfully!", "success");
     form.reset();
+
+    // Blur any focused element to avoid ARIA issue
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
+
     bootstrap.Modal.getInstance(
       document.getElementById("create-post-modal")
     ).hide();

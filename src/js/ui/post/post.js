@@ -21,9 +21,13 @@ export async function displayPost(postId) {
                 : ""
             }
           <div class="mb-2">
-            <span>By <strong>${
-              post.author?.name || "Unknown Author"
-            }</strong></span> | 
+            <span>By
+              <a href="/fed2-js2-ca-Mayamariaruth/profile/authorPosts/index.html?username=${
+                post.author?.name
+              }" class="author-link text-white text-decoration-underline">
+                <strong>${post.author?.name || "Unknown Author"}</strong>
+              </a>
+            </span> -
             <span>${new Date(post.created).toLocaleDateString()}</span>
           </div>
         </div>

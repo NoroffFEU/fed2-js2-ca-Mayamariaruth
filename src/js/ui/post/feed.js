@@ -51,7 +51,7 @@ export async function loadPosts(searchPosts = null) {
       }" class="rounded-circle me-2 user-avatar">
             <div>
               <strong class="h5 mb-0">
-                <a href="/profile/authorPosts/?username=${
+                <a href="/fed2-js2-ca-Mayamariaruth/profile/authorPosts/?username=${
                   post.author?.name
                 }" class="text-decoration-none text-white">
                   ${post.author?.name || "Unknown Author"}

@@ -32,7 +32,7 @@ export async function renderAuthorPostsPage() {
 
     posts.forEach((post) => {
       const postCard = document.createElement("div");
-      postCard.className = "card mx-auto mb-5 mt-4 text-white pt-1 post-card";
+      postCard.className = "card mx-auto mt-4 text-white pt-1 post-card";
 
       postCard.innerHTML = `
           <div class="card-body">
