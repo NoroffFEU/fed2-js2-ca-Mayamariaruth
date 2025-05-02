@@ -1,4 +1,4 @@
-import { onLogin } from "../../ui/auth/login.js";
+import { onLogin } from "@ui/auth/login.js";
 
 const form = document.forms.loginForm;
 

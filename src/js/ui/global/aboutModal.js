@@ -1,6 +1,8 @@
 // Load the modal HTML into the DOM
 export async function loadAboutModal() {
-  const response = await fetch("/components/aboutModal.html");
+  const response = await fetch(
+    "/fed2-js2-ca-Mayamariaruth/components/aboutModal.html"
+  );
   const modalHTML = await response.text();
   document.body.insertAdjacentHTML("beforeend", modalHTML);
 }

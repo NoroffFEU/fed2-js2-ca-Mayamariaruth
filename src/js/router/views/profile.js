@@ -1,5 +1,5 @@
-import { displayUserProfile } from "../../ui/profile/read.js";
-import { onOpenEditProfileModal } from "../../ui/profile/edit.js";
+import { displayUserProfile } from "@ui/profile/read.js";
+import { onOpenEditProfileModal } from "@ui/profile/edit.js";
 
 displayUserProfile();
 

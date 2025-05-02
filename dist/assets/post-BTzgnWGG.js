@@ -1,4 +1,4 @@
-import{A as e,h as n}from"./headers-C2fTOECc.js";import{s as i}from"./app-CJTndDny.js";async function c(o){const t=`${e}/${o}?_author=true`,a=await fetch(t,{headers:n()});if(!a.ok){const r=await a.json();throw new Error(r.errors?.[0]?.message||"Failed to load post")}return(await a.json()).data}async function d(o){try{const t=await c(o),a=document.getElementById("post-page");a.innerHTML=`
+import{A as e,h as n}from"./authorPosts-DUoUsbdZ.js";import{s as i}from"./feed-Crbd18v-.js";async function c(o){const t=`${e}/${o}?_author=true`,a=await fetch(t,{headers:n()});if(!a.ok){const r=await a.json();throw new Error(r.errors?.[0]?.message||"Failed to load post")}return(await a.json()).data}async function d(o){try{const t=await c(o),a=document.getElementById("post-page");a.innerHTML=`
       <div class="card mx-auto mb-5 mt-4 text-white pt-1 post-card">
         <div class="card-body">
           <h1 class="card-title mb-3">${t.title}</h1>

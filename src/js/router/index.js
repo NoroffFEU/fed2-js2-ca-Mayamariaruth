@@ -1,25 +1,32 @@
+const BASE_PATH = "/fed2-js2-ca-Mayamariaruth";
+
 export default async function router(pathname = window.location.pathname) {
-  switch (pathname) {
-    case "/index.html":
+  const path = pathname.replace(BASE_PATH, "") || "/";
+  const normalizedPath = path.replace(/\/index\.html$|\/$/g, "") || "/";
+
+  switch (normalizedPath) {
+    case "":
     case "/":
+      console.log("📦 Loading feed view");
       await import("./views/feed.js");
       break;
-    case "/auth/login/":
+    case "/auth/login":
       await import("./views/login.js");
       break;
-    case "/auth/register/":
+    case "/auth/register":
       await import("./views/register.js");
       break;
-    case "/post/index.html":
+    case "/post":
       await import("./views/post.js");
       break;
-    case "/profile/":
+    case "/profile":
       await import("./views/profile.js");
       break;
-    case "/profile/authorPosts/":
+    case "/profile/authorPosts":
       await import("./views/authorPosts.js");
       break;
     default:
+      console.warn("⚠️ Route not found:", normalizedPath);
       await import("./views/notFound.js");
   }
 }

@@ -1,8 +1,10 @@
 // Global styles
 import "./css/style.css";
 
-// Utilities
+// Router
 import router from "./js/router/index.js";
+
+// Utilities
 import { protectRoutes } from "./js/utils/protectedRoutes.js";
 import { setActiveLink, updateNavbarLinks } from "./js/utils/nav.js";
 import { showNotification } from "./js/utils/notifications.js";

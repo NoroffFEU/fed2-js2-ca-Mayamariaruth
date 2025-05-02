@@ -9,7 +9,7 @@ export function protectRoutes() {
     "/index.html",
     "/post/index.html",
     "/profile/",
-    "/profile/authorposts/",
+    "/profile/authorPosts/",
   ];
 
   const needsAuth = protectedPaths.includes(currentPath);

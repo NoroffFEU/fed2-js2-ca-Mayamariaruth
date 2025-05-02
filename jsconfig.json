@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@controllers/*": ["src/js/controllers/*"],
+      "@api/*": ["src/js/api/*"],
+      "@ui/*": ["src/js/ui/*"],
+      "@utils/*": ["src/js/utils/*"]
+    }
+  },
+  "include": ["src"]
+}
