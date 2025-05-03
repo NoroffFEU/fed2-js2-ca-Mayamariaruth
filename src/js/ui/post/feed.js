@@ -33,6 +33,12 @@ export async function loadPosts(searchPosts = null) {
 
     container.innerHTML = "";
 
+    // Add a main heading to home page
+    const heading = document.createElement("h1");
+    heading.className = "feed-heading";
+    heading.textContent = "Latest Posts";
+    container.appendChild(heading);
+
     const posts = searchPosts || (await readPosts());
     const currentUser = getUserName();
 

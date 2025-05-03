@@ -6,6 +6,13 @@
   max-width: 1400px;
 }
 
+.feed-heading {
+  width: 95%;
+  margin: 0 auto;
+  padding: 20px 0 15px;
+  max-width: 1400px;
+}
+
 .create-form-field {
   background-color: var(--form-fields);
 }

@@ -38,9 +38,16 @@ export function onOpenEditModal(event) {
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+              <label for="edit-title" class="sr-only">Edit Post Title</label>
               <input id="edit-title" type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" value="${title}" />
+              
+              <label for="edit-body" class="sr-only">Edit Post Body</label>
               <textarea id="edit-body" name="body" class="form-control mb-3 rounded-3 create-form-field" rows="10">${body}</textarea>
+              
+              <label for="edit-media-url" class="sr-only">Edit Image URL</label>
               <input id="edit-media-url" type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
+              
+              <label for="edit-media-alt" class="sr-only">Edit Image Alt Text</label>
               <input id="edit-media-alt" type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
             </div>
             <div class="modal-footer">

@@ -42,7 +42,8 @@ export async function renderCreatePostForm() {
         <strong class="h5 mb-0">${user.name}</strong>
       </div>
       <div>
-        <input type="text" class="form-control rounded-3 create-form-field" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
+        <label for="create-post-input" class="sr-only">What's on your mind?</label>
+        <input id="create-post-input" type="text" class="form-control rounded-3 create-form-field" placeholder="What's on your mind?" data-bs-toggle="modal" data-bs-target="#create-post-modal" readonly />
       </div>
     </div>
 
@@ -55,10 +56,17 @@ export async function renderCreatePostForm() {
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" placeholder="Title" />
-            <textarea name="body" class="form-control mb-3 rounded-3 create-form-field" placeholder="Write your post..." rows="10"></textarea>
-            <input type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
-            <input type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
+            <label for="create-title" class="sr-only">Post Title</label>
+            <input id="create-title" type="text" name="title" class="form-control mb-3 rounded-3 create-form-field" placeholder="Title" />
+
+            <label for="create-body" class="sr-only">Post Body</label>
+            <textarea id="create-body" name="body" class="form-control mb-3 rounded-3 create-form-field" placeholder="Write your post..." rows="10"></textarea>
+
+            <label for="create-media-url" class="sr-only">Image URL</label>
+            <input id="create-media-url" type="text" name="mediaUrl" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image URL (optional)" />
+
+            <label for="create-media-alt" class="sr-only">Image Alt Text</label>
+            <input id="create-media-alt" type="text" name="mediaAlt" class="form-control mb-3 rounded-3 create-form-field" placeholder="Image alt text (optional)" />
           </div>
           <div class="modal-footer">
             <button type="submit" class="submit-btn">Post</button>
