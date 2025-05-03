@@ -1,3 +1,4 @@
+import { Modal } from "bootstrap";
 import { editProfile } from "../../api/profile/edit.js";
 import { displayUserProfile } from "./read.js";
 import { showNotification } from "../../utils/notifications.js";
@@ -41,10 +42,9 @@ export async function onOpenEditProfileModal() {
   // Insert the modal into the body
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-  const modalElement = new bootstrap.Modal(
-    document.getElementById("edit-profile-modal")
-  );
-  modalElement.show();
+  const modalElement = document.getElementById("edit-profile-modal");
+  const modal = new Modal(modalElement);
+  modal.show();
 
   // Fix the aria-hidden issue when modal is shown
   modalElement._element.addEventListener("shown.bs.modal", () => {
@@ -97,11 +97,10 @@ async function onEditProfile(event) {
     await displayUserProfile();
 
     // Close the modal
-    const modalInstance = bootstrap.Modal.getInstance(
-      document.getElementById("edit-profile-modal")
-    );
-    modalInstance.hide();
-    document.getElementById("edit-profile-modal").remove();
+    const modalElement = document.getElementById("edit-profile-modal");
+    const modal = new Modal(modalElement);
+    modal.hide();
+    modalElement.remove();
 
     showNotification("Profile updated successfully!", "success");
   } catch (error) {

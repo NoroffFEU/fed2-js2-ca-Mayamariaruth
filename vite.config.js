@@ -3,15 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   appType: "mpa",
-  base: "/fed2-js2-ca-Mayamariaruth/",
-  resolve: {
-    alias: {
-      "@controllers": resolve(__dirname, "src/js/controllers"),
-      "@api": resolve(__dirname, "src/js/api"),
-      "@ui": resolve(__dirname, "src/js/ui"),
-      "@utils": resolve(__dirname, "src/js/utils"),
-    },
-  },
+  base: "/fed2-js2-ca-Mayamariaruth/", // Base path for the project
   build: {
     target: "esnext",
     rollupOptions: {
