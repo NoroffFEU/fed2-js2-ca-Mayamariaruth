@@ -13,7 +13,7 @@ export async function readPostsByAuthor(username) {
 
   if (!response.ok) {
     throw new Error(
-      error.errors?.[0]?.message || "Failed to fetch user's posts"
+      result.errors?.[0]?.message || "Failed to fetch user's posts"
     );
   }
 

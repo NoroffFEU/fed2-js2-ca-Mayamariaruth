@@ -1,3 +1,5 @@
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 
 // Clear search query if not on the feed page

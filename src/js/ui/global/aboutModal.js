@@ -1,3 +1,5 @@
+import { Modal } from "bootstrap";
+
 // Load the modal HTML into the DOM
 export async function loadAboutModal() {
   const response = await fetch(
@@ -15,7 +17,7 @@ export function aboutModalTrigger() {
   const modalElement = document.querySelector("#about-modal");
 
   if (aboutLinks.length && modalElement) {
-    const modal = new bootstrap.Modal(modalElement);
+    const modal = new Modal(modalElement);
 
     aboutLinks.forEach((link) => {
       link.addEventListener("click", (e) => {

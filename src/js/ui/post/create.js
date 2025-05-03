@@ -1,3 +1,4 @@
+import { Modal } from "bootstrap";
 import { isLoggedIn, getUserName } from "../../utils/auth.js";
 import { createPost } from "../../api/post/create.js";
 import { readProfile } from "../../api/profile/read.js";
@@ -149,9 +150,8 @@ export async function onCreatePost(event) {
       document.activeElement.blur();
     }
 
-    bootstrap.Modal.getInstance(
-      document.getElementById("create-post-modal")
-    ).hide();
+    const modal = new Modal(document.getElementById("create-post-modal"));
+    modal.hide();
     await loadPosts();
   } catch (error) {
     showNotification(error.message, "error");

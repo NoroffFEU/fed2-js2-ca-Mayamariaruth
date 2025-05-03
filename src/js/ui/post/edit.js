@@ -1,3 +1,4 @@
+import { Modal } from "bootstrap";
 import { editPost } from "../../api/post/edit.js";
 import { showNotification } from "../../utils/notifications.js";
 import {
@@ -68,7 +69,8 @@ export function onOpenEditModal(event) {
       form.addEventListener("submit", onEditPost);
     }
 
-    new bootstrap.Modal(modalElement).show();
+    const modal = new Modal(modalElement);
+    modal.show();
   }
 }
 
@@ -163,8 +165,8 @@ export async function onEditPost(event) {
 
     // Close the modal
     const modalElement = document.getElementById("edit-post-modal");
-    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-    if (modalInstance) modalInstance.hide();
+    const modal = new Modal(modalElement);
+    modal.hide();
     modalElement.remove();
   } catch (error) {
     const message =

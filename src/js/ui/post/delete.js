@@ -1,3 +1,4 @@
+import { Modal } from "bootstrap";
 import { deletePost } from "../../api/post/delete.js";
 import { searchPosts } from "../../api/post/feed.js";
 import { loadPosts } from "./feed.js";
@@ -46,7 +47,8 @@ export function onOpenDeleteModal(event) {
       confirmDeleteBtn.addEventListener("click", onDeletePost);
     }
 
-    new bootstrap.Modal(modalElement).show();
+    const modal = new Modal(modalElement);
+    modal.show();
   }
 }
 
@@ -63,8 +65,8 @@ async function onDeletePost(event) {
 
     // Close and remove the modal
     const modalElement = document.getElementById("delete-post-modal");
-    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-    if (modalInstance) modalInstance.hide();
+    const modal = new Modal(modalElement);
+    modal.hide();
     modalElement.remove();
 
     const query = localStorage.getItem("searchQuery");
