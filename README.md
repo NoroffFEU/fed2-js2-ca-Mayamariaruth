@@ -7,6 +7,7 @@
 3. [Technologies Used](#technologies-used)
 4. [API Usage](#api-usage)
 5. [How to Run](#how-to-run)
+6. [Contributing](#contributing)
 
 ## Project Overview
 
@@ -61,3 +62,30 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## Contributing
+
+Contributions are welcome and encouraged! To contribute:
+
+1. Fork the repository
+2. Create a new branch for your feature or bug fix:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+3. Commit your changes with clear messages:
+
+```bash
+git commit -m "Add: your message here"
+```
+
+4. Push to your forked repo:
+
+```bash
+git push origin feature/your-feature-name
+```
+
+5. Open a pull request on the main repository with a description of your changes.
+
+Please follow the existing code style, and make sure all features are tested before submitting a PR.
