@@ -9,9 +9,8 @@ import {
 } from "../global/loadingSpinner.js";
 
 /**
- * Renders the "Create Post" form on the homepage if the user is logged in.
- * Includes user avatar, input trigger, and modal with form fields.
- * Attaches the form submission handler for post creation.
+ * Renders the "Create Post" form with user info and modal, if user is logged in.
+ * Also sets up the post submission handler.
  *
  * @async
  * @function renderCreatePostForm
@@ -82,6 +81,8 @@ export async function renderCreatePostForm() {
  * @function onCreatePost
  * @param {SubmitEvent} event - The submit event triggered by the form submission.
  * @returns {Promise<void>} Resolves after post is created, modal is closed, and the feed is updated.
+ *
+ * @throws {Error} If the post creation fails or form validation fails.
  *
  * @example
  * document.getElementById('create-post-form').addEventListener('submit', onCreatePost);

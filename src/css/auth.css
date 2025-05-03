@@ -31,6 +31,9 @@
   border-radius: 8px;
   padding: 8px 0;
   background-color: transparent;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
 }
 
 .link-btn:hover {

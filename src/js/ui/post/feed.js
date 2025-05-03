@@ -12,7 +12,7 @@ import { createFollowButton } from "../../utils/followBtn.js"; // Import the new
  *
  * @async
  * @function loadPosts
- * @param {Array<Object>|null} [searchPosts=null] - Optional array of post objects to render instead of fetching.
+ * @param {Array<Object>} [searchPosts] - Optional array of post objects to render instead of fetching.
  * @returns {Promise<void>} Resolves when posts are loaded and rendered into the DOM.
  *
  * @example
