@@ -8,6 +8,7 @@
 4. [API Usage](#api-usage)
 5. [How to Run](#how-to-run)
 6. [Contributing](#contributing)
+7. [Credit](#credit)
 
 ## Project Overview
 
@@ -89,3 +90,15 @@ git push origin feature/your-feature-name
 5. Open a pull request on the main repository with a description of your changes.
 
 Please follow the existing code style, and make sure all features are tested before submitting a PR.
+
+## Credit
+
+This project includes code adapted or inspired by Noroff coursework materials, online documentation, and previous projects (including feedback from teachers).
+
+- [Noroff API](https://docs.noroff.dev/docs/v2)
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [MDN Web Docs](https://developer.mozilla.org/en-US/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Vite](https://vitejs.dev/config/)
+- [Vite MPA](https://vite.dev/guide/build.html#multi-page-app)
+- [W3Schools](https://www.w3schools.com/)
