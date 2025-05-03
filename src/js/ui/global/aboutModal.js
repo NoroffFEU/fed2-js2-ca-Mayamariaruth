@@ -26,11 +26,13 @@ export function aboutModalTrigger() {
       });
     });
 
-    // Fix the aria-hidden issue on the modal backdrop when it's shown
-    modalElement.addEventListener("shown.bs.modal", () => {
-      const backdrop = document.querySelector(".modal-backdrop");
-      if (backdrop) {
-        backdrop.removeAttribute("aria-hidden");
+    // Fix focus error by blurring any focused element before the modal closes
+    modalElement.addEventListener("hide.bs.modal", () => {
+      if (
+        document.activeElement &&
+        modalElement.contains(document.activeElement)
+      ) {
+        document.activeElement.blur();
       }
     });
   }
