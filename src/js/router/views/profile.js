@@ -1,3 +1,7 @@
-import { authGuard } from "../../utilities/authGuard";
+import { displayUserProfile } from "../../ui/profile/read.js";
+import { onOpenEditProfileModal } from "../../ui/profile/edit.js";
 
-authGuard();
+displayUserProfile();
+
+const editProfileBtn = document.getElementById("edit-profile-btn");
+editProfileBtn.addEventListener("click", onOpenEditProfileModal);

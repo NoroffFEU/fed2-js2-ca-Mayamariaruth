@@ -1,21 +1,31 @@
-import { resolve } from "path";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   appType: "mpa",
-  base: "",
+  base: "/fed2-js2-ca-Mayamariaruth/", // Base path for the project
   build: {
     target: "esnext",
     rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Create a chunk per view file so Vite bundles the views files
+          if (id.includes("src/js/router/views")) {
+            const viewName = id.split("/").pop().split(".")[0];
+            return viewName;
+          }
+        },
+      },
       input: {
-        main: resolve(__dirname, "./index.html"),
-        login: resolve(__dirname, "./auth/login/index.html"),
-        auth: resolve(__dirname, "./auth/index.html"),
-        register: resolve(__dirname, "./auth/register/index.html"),
-        profile: resolve(__dirname, "./profile/index.html"),
-        post: resolve(__dirname, "./post/index.html"),
-        editPost: resolve(__dirname, "./post/edit/index.html"),
-        createPost: resolve(__dirname, "./post/create/index.html"),
+        main: resolve(__dirname, "index.html"),
+        login: resolve(__dirname, "auth/login/index.html"),
+        register: resolve(__dirname, "auth/register/index.html"),
+        profile: resolve(__dirname, "profile/index.html"),
+        authorPosts: resolve(__dirname, "profile/authorPosts/index.html"),
+        post: resolve(__dirname, "post/index.html"),
       },
     },
   },

@@ -1,0 +1,23 @@
+.profile-card {
+  border: solid var(--secondary) 1px !important;
+  background-color: var(--primary);
+  width: 80%;
+  max-width: 500px;
+  max-height: 540px;
+}
+
+#profile-avatar {
+  width: 60%;
+}
+
+textarea.search {
+  background-color: var(--form-fields);
+  border: solid 1px var(--secondary);
+  color: #ffffff;
+}
+
+textarea.search:focus {
+  background-color: var(--background);
+  border: solid 2px var(--secondary);
+  outline: none;
+}

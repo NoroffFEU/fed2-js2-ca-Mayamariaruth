@@ -1,5 +1,4 @@
-import { onLogin } from "../../ui/auth/login";
+import { onLogin } from "../../ui/auth/login.js";
 
-const form = document.forms.login;
-
+const form = document.forms.loginForm;
 form.addEventListener("submit", onLogin);
