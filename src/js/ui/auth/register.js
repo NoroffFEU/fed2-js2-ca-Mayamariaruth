@@ -5,7 +5,12 @@ import {
   hideLoadingSpinner,
 } from "../global/loadingSpinner.js";
 
-// Register form submission logic with validation
+/**
+ * Handles registration form submission:
+ * - Validates username, email, and password
+ * - Displays inline errors and notifications
+ * - Registers user and redirects on success
+ */
 export async function onRegister(event) {
   event.preventDefault();
 
@@ -18,6 +23,7 @@ export async function onRegister(event) {
   const email = emailField.value.trim();
   const password = passwordField.value;
 
+  // Clear previous validation styling
   [usernameField, emailField, passwordField].forEach((field) =>
     field.classList.remove("is-invalid")
   );
@@ -77,6 +83,7 @@ export async function onRegister(event) {
     showLoadingSpinner();
     const result = await registerUser(username, email, password);
     if (result) {
+      // Store success message for display after redirect
       sessionStorage.setItem(
         "notification",
         JSON.stringify({

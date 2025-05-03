@@ -10,8 +10,8 @@ import {
 } from "../global/loadingSpinner.js";
 
 /**
- * Renders the "Create Post" form with user info and modal, if user is logged in.
- * Also sets up the post submission handler.
+ * Renders the "Create Post" form with user info and automatic display of modal, if user is logged in.
+ * Also sets up the modal post submission handler.
  *
  * @async
  * @function renderCreatePostForm
@@ -32,6 +32,7 @@ export async function renderCreatePostForm() {
   if (!username) return;
   const user = await readProfile(username);
 
+  // Create the HTML content and modal HTML
   container.innerHTML = `
     <div id="feed-boxes" class="rounded-3 mt-4 mb-3">
       <div class="d-flex align-items-center mb-3">
@@ -74,7 +75,7 @@ export async function renderCreatePostForm() {
 }
 
 /**
- * Handles the submission of the "Create Post" form.
+ * Handles the submission of the "Create Post" modal form.
  * Validates the user input, displays notifications on errors, and sends the post data to the API.
  * On success, resets the form, closes the modal, and reloads the post feed.
  *

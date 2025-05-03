@@ -1,5 +1,6 @@
 const BASE_PATH = "/fed2-js2-ca-Mayamariaruth";
 
+// Dynamically import view modules based on the current pathname
 export default async function router(pathname = window.location.pathname) {
   const path = pathname.replace(BASE_PATH, "") || "/";
   const normalizedPath = path.replace(/\/index\.html$|\/$/g, "") || "/";

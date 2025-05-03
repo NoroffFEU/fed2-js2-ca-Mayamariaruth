@@ -15,6 +15,7 @@ export function onOpenDeleteModal(event) {
   const postBox = event.target.closest(".post-box");
   const title = postBox.querySelector(".post-title")?.innerText || "this post";
 
+  // Create the modal HTML
   const modalHtml = `
       <div class="modal fade" id="delete-post-modal" tabindex="-1">
         <div class="modal-dialog">
@@ -69,6 +70,7 @@ async function onDeletePost(event) {
     modal.hide();
     modalElement.remove();
 
+    // Checks if a post is deleted in a search query and renders the searched posts again
     const query = localStorage.getItem("searchQuery");
     if (query) {
       const response = await searchPosts(query);

@@ -41,6 +41,7 @@ export async function loadPosts(searchPosts = null) {
       feedBox.id = "feed-boxes";
       feedBox.className = "post-box shadow rounded-3 p-3 mb-3";
 
+      // Create the post HTML
       feedBox.innerHTML = `
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="d-flex align-items-center">

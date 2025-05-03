@@ -38,12 +38,14 @@ export async function searchFeed() {
       return;
     }
 
+    // Variable that will hold either all posts or filtered search results
     let posts;
 
     if (query) {
       const response = await searchPosts(query);
       posts = response.data;
 
+      // Display search feedback (e.g., no results or results message)
       if (feedback) {
         feedback.textContent =
           posts.length === 0
@@ -61,6 +63,7 @@ export async function searchFeed() {
     loadPosts(posts);
     setHomeActive();
 
+    // Show the "Clear Search" button if there's a query; reset feed and UI when clicked
     const clearBtn = document.getElementById("clear-search-btn");
     if (clearBtn) {
       clearBtn.classList.toggle("d-none", !query);

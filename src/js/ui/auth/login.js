@@ -5,7 +5,13 @@ import {
   hideLoadingSpinner,
 } from "../global/loadingSpinner.js";
 
-// Login form submission logic with validation
+/**
+ * Handle login form submission:
+ * - Validates input
+ * - Sends login request
+ * - Shows loading spinner and notifications
+ * - Redirects on success
+ */
 export async function onLogin(event) {
   event.preventDefault();
 
@@ -16,6 +22,7 @@ export async function onLogin(event) {
   const email = emailField.value.trim().toLowerCase();
   const password = passwordField.value;
 
+  // Input validation
   if (!email || !password) {
     showNotification("Please enter both email and password", "error");
     return;
@@ -24,6 +31,8 @@ export async function onLogin(event) {
   try {
     showLoadingSpinner();
     const user = await loginUser({ email, password });
+
+    // Store success message to display after redirect
     sessionStorage.setItem(
       "notification",
       JSON.stringify({

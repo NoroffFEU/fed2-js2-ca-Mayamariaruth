@@ -1,3 +1,4 @@
+// Handles unmatched routes by alerting the user and logging debug info
 export default function notFoundView() {
   alert(
     "The page you are trying to access cannot be found. It may not exist, or the path is incorrect."

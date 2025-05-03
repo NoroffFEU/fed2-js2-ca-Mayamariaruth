@@ -1,11 +1,12 @@
 import { readPost } from "../../api/post/post.js";
 import { showNotification } from "../../utils/notifications.js";
 
-// Display an individual post on the post page
+// Displays an individual post on the post page
 export async function displayPost(postId) {
   try {
     const post = await readPost(postId);
 
+    // Create the post HTML
     const container = document.getElementById("post-page");
     container.innerHTML = `
       <div class="card mx-auto mb-5 mt-4 text-white pt-1 post-card">

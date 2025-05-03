@@ -28,6 +28,7 @@ export function onOpenEditModal(event) {
   const mediaUrl = postImage?.src || "";
   const mediaAlt = postImage?.alt || "";
 
+  // Create the modal HTML
   const modalHtml = `
       <div class="modal fade" id="edit-post-modal" tabindex="-1">
         <div class="modal-dialog">

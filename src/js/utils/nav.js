@@ -60,7 +60,7 @@ export function updateNavbarLinks() {
   });
 }
 
-// Specifically set home icon as active
+// Specifically set home icon as active (to ensure its active on searches etc)
 export function setHomeActive() {
   const homeDesktop = document.querySelector("#nav-home-desktop");
   const homeMobile = document.querySelector("#nav-home-mobile");

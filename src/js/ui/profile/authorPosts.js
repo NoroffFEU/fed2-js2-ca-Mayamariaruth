@@ -1,6 +1,6 @@
 import { readPostsByAuthor } from "../../api/profile/authorPosts.js";
 
-// Render all author posts
+// Render all author posts on page
 export async function renderAuthorPostsPage() {
   const container = document.getElementById("author-feed-container");
   if (!container) return;
@@ -34,6 +34,7 @@ export async function renderAuthorPostsPage() {
       const postCard = document.createElement("div");
       postCard.className = "card mx-auto mt-4 text-white pt-1 post-card";
 
+      // Create the HTML content
       postCard.innerHTML = `
           <div class="card-body">
             <h2 class="card-title mb-3">${post.title}</h2>

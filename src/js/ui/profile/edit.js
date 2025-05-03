@@ -7,7 +7,7 @@ import {
   hideLoadingSpinner,
 } from "../global/loadingSpinner.js";
 
-// Display the edit profile modal
+// Displays the edit profile modal
 export async function onOpenEditProfileModal() {
   const avatarUrl = document.getElementById("profile-avatar").src;
   const bio = document.getElementById("profile-bio").textContent;
