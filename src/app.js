@@ -1,12 +1,12 @@
-// Global styles
 import "./css/style.css";
 
 // Clear search query if not on the feed page
 (function clearSearchQuery() {
+  const path = window.location.pathname;
   const isFeedPage =
-    window.location.pathname.endsWith("/index.html") ||
-    window.location.pathname === "/fed2-js2-ca-Mayamariaruth" ||
-    window.location.pathname === "/fed2-js2-ca-Mayamariaruth/";
+    path === "/fed2-js2-ca-Mayamariaruth" ||
+    path === "/fed2-js2-ca-Mayamariaruth/" ||
+    path === "/fed2-js2-ca-Mayamariaruth/index.html";
 
   if (!isFeedPage) {
     localStorage.removeItem("searchQuery");
@@ -17,7 +17,7 @@ import "./css/style.css";
 document
   .querySelectorAll("#nav-home-desktop, #nav-home-mobile, .logo")
   .forEach((el) => {
-    el?.addEventListener("click", () => {
+    el.addEventListener("click", () => {
       localStorage.removeItem("searchQuery");
     });
   });
@@ -42,7 +42,12 @@ import {
 protectRoutes();
 
 // Route and load the current page
-await router(window.location.pathname);
+try {
+  await router(window.location.pathname);
+} catch (err) {
+  console.error("Routing error:", err);
+  showNotification("Page failed to load.", "error");
+}
 
 // Clear search query when clicking away
 document.querySelectorAll('a[href="/"]').forEach((link) => {
