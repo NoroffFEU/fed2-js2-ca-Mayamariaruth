@@ -1,7 +1,7 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
 
-// Sends an authenticated request to delete a post
+// Sends an authenticated request to delete a post with its ID
 export async function deletePost(id) {
   const url = `${API_SOCIAL_POSTS}/${id}`;
 

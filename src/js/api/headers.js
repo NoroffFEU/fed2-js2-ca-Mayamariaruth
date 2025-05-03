@@ -1,5 +1,6 @@
 import { API_KEY } from "./constants";
 
+// Constructs and returns the headers for API requests
 export function headers() {
   const headers = new Headers();
 

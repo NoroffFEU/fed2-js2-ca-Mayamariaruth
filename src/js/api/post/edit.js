@@ -1,7 +1,7 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
 
-// Sends an authenticated request to edit a post
+// Sends an authenticated request to edit a post with its ID
 export async function editPost(id, { title, body, media }) {
   const url = `${API_SOCIAL_POSTS}/${id}`;
 

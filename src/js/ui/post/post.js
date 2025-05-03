@@ -1,7 +1,7 @@
 import { readPost } from "../../api/post/post.js";
 import { showNotification } from "../../utils/notifications.js";
 
-// Displays an individual post on the post page
+// Fetches and displays an individual post on the post page using the postId
 export async function displayPost(postId) {
   try {
     const post = await readPost(postId);

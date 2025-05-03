@@ -7,7 +7,7 @@ import {
   hideLoadingSpinner,
 } from "../global/loadingSpinner.js";
 
-// Displays the edit profile modal
+// Opens the "Edit Profile" modal and pre-fills the form with current user profile data
 export async function onOpenEditProfileModal() {
   const avatarUrl = document.getElementById("profile-avatar").src;
   const bio = document.getElementById("profile-bio").textContent;
@@ -61,7 +61,7 @@ export async function onOpenEditProfileModal() {
   }
 }
 
-// Handles the editing of profile details when confirmed
+// Handles profile editing and updating upon form submission
 async function onEditProfile(event) {
   event.preventDefault();
 

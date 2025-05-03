@@ -2,13 +2,20 @@ import { onLogout } from "../auth/logout.js";
 import { updateNavbarLinks } from "../../utils/nav.js";
 import { isLoggedIn } from "../../utils/auth.js";
 
-// Logout logic clearing the session, updating navbar and displaying notification
+/**
+ * Handles the logout process:
+ * - Calls onLogout to clear session and user data.
+ * - Updates the navbar links to reflect the logged-out state.
+ * - Displays a success notification.
+ * - Redirects to the homepage after logout.
+ */
 async function handleLogout(event) {
   event.preventDefault();
 
   onLogout();
   updateNavbarLinks();
 
+  // Set a notification to inform the user that they have logged out
   sessionStorage.setItem(
     "notification",
     JSON.stringify({

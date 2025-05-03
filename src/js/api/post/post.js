@@ -1,7 +1,7 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { headers } from "../headers.js";
 
-// Fetch individual post from API
+// Fetch individual post from API with ID and author
 export async function readPost(id) {
   const url = `${API_SOCIAL_POSTS}/${id}?_author=true`;
 

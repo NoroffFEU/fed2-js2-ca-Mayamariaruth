@@ -1,10 +1,11 @@
 import { readPostsByAuthor } from "../../api/profile/authorPosts.js";
 
-// Render all author posts on page
+// Renders the author's posts on the profile page based on the "username" query parameter
 export async function renderAuthorPostsPage() {
   const container = document.getElementById("author-feed-container");
   if (!container) return;
 
+  // Extract the "username" query parameter from the URL
   const params = new URLSearchParams(window.location.search);
   const username = params.get("username");
 
@@ -30,6 +31,7 @@ export async function renderAuthorPostsPage() {
     container.appendChild(heading);
     container.appendChild(postCount);
 
+    // Loop through all the posts and create a card for each post
     posts.forEach((post) => {
       const postCard = document.createElement("div");
       postCard.className = "card mx-auto mt-4 text-white pt-1 post-card";

@@ -53,7 +53,7 @@ export function onOpenDeleteModal(event) {
   }
 }
 
-// Handles the deletion of a post when confirmed
+// Handles the deletion of a post when confirmed and reloads posts
 async function onDeletePost(event) {
   const button = event.currentTarget;
   const postId = button.dataset.id;
@@ -70,7 +70,7 @@ async function onDeletePost(event) {
     modal.hide();
     modalElement.remove();
 
-    // Checks if a post is deleted in a search query and renders the searched posts again
+    // Re-fetch the posts if there's an active search query, otherwise reload all posts
     const query = localStorage.getItem("searchQuery");
     if (query) {
       const response = await searchPosts(query);

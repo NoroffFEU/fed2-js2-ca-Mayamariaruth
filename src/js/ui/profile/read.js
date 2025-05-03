@@ -1,12 +1,13 @@
 import { readProfile } from "../../api/profile/read.js";
 import { getUserName } from "../../utils/auth.js";
 
-// Display user data on profile page
+// Fetches and displays user profile data on the profile page
 export async function displayUserProfile() {
   const username = getUserName();
   if (!username) return;
 
   try {
+    // Fetch the user's profile data from the API using the username
     const user = await readProfile(username);
 
     const profileUsername = document.getElementById("profile-username");
@@ -14,6 +15,7 @@ export async function displayUserProfile() {
     const profileBio = document.getElementById("profile-bio");
     const profileAvatar = document.getElementById("profile-avatar");
 
+    // Set the profile data into the corresponding HTML elements
     if (profileUsername) profileUsername.textContent = user.name;
     if (profileEmail) profileEmail.textContent = user.email;
     if (profileBio) profileBio.textContent = user.bio || "No bio provided";

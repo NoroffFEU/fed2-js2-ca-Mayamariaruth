@@ -1,7 +1,7 @@
 import { API_AUTH_LOGIN } from "../constants.js";
 import { headers } from "../headers.js";
 
-// Authenticates login and returns a valid access token
+// Authenticates user login and returns a valid access token
 export async function loginUser({ email, password }) {
   const credentials = { email, password };
 
@@ -19,7 +19,7 @@ export async function loginUser({ email, password }) {
       throw new Error(data.errors?.[0]?.message || "Login failed");
     }
 
-    // Store access token and user data
+    // Store access token and user data in local storage
     localStorage.setItem("accessToken", data.data.accessToken);
     localStorage.setItem("profile", JSON.stringify(data.data));
 
